@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-C:\Users\luked\Documents\recipegen\RecipeGen\obj\Debug\net8.0-windows\
+C:\Users\adr3wb\Source\Repos\RecipeGen2\RecipeGen\obj\Debug\net8.0-windows\
 RecipeGen
 none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
-C:\Users\luked\Documents\recipegen\RecipeGen\App.xaml
+C:\Users\adr3wb\Source\Repos\RecipeGen2\RecipeGen\App.xaml
 5-1586496954
 
 10-329596705
-2031103538168
+198-556154604
 AddIngredientScreen.xaml;AddPantryItemScreen.xaml;AddRecipeScreen.xaml;MainContent.xaml;MainWindow.xaml;
 
 False
