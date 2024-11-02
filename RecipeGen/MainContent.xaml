@@ -13,7 +13,8 @@
     <Grid Background="{StaticResource PrimaryBackground}" Margin="10">
         <TabControl Background="{StaticResource PrimaryBackground}"
                     BorderBrush="{StaticResource AccentColor}"
-                    Foreground="{StaticResource TextColor}">
+                    Foreground="{StaticResource TextColor}"
+                    SelectionChanged="TabControl_SelectionChanged">
 
             <!-- Recipes Tab -->
             <TabItem Header="Recipes">

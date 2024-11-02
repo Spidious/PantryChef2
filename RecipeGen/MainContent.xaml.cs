@@ -5,6 +5,9 @@ namespace RecipeGen
 {
     public partial class MainContent : UserControl
     {
+
+        public static string database_path = "C:\\Users\\luked\\Documents\\recipegen\\RecipeGen\\Data\\database.db";
+
         public MainContent()
         {
             InitializeComponent();
@@ -35,5 +38,44 @@ namespace RecipeGen
         {
             this.Content = new MainContent(); // Reset to the original MainContent
         }
+
+        private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (e.Source is TabControl) // Ensure this event is for the TabControl, not nested controls
+            {
+                var selectedTab = (sender as TabControl)?.SelectedItem as TabItem;
+
+                // Check the header of each TabItem and call the corresponding function
+                if (selectedTab?.Header?.ToString() == "Recipes")
+                {
+                    LoadRecipes();
+                }
+                else if (selectedTab?.Header?.ToString() == "Pantry")
+                {
+                    LoadPantry();
+                }
+                else if (selectedTab?.Header?.ToString() == "Ingredients")
+                {
+                    LoadIngredients();
+                }
+            }
+        }
+
+        // Functions for loading data
+        private void LoadRecipes()
+        {
+            // Add code to load recipes
+        }
+
+        private void LoadPantry()
+        {
+            // Add code to load pantry items
+        }
+
+        private void LoadIngredients()
+        {
+            // Add code to load ingredients
+        }
+
     }
 }

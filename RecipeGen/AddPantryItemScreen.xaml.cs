@@ -47,7 +47,7 @@ namespace RecipeGen
             ";
 
             // Run the query in the Database
-            using (var connection = new SQLiteConnection("Data Source=C:\\Users\\luked\\Documents\\recipegen\\RecipeGen\\Data\\database.db"))
+            using (var connection = new SQLiteConnection($"Data Source={MainContent.database_path}"))
             {
                 connection.Open();
                 using (var command = new SQLiteCommand(query, connection))
