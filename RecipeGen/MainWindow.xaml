@@ -38,11 +38,12 @@
                                  BorderBrush="{StaticResource AccentColor}" 
                                  Margin="0,0,10,0"
                                  Text="Search Recipes"/>
-                        <Button Width="30" 
+                        <Button x:Name="AddRecipeButton" Width="30" 
                                 Height="30" 
                                 Content="+" 
                                 Background="{StaticResource AccentColor}" 
-                                Foreground="{StaticResource TextColor}"/>
+                                Foreground="{StaticResource TextColor}"
+                                Click="AddRecipeButton_Click"/>
                     </StackPanel>
 
                     <!-- Space for Recipe Widgets -->
@@ -69,11 +70,12 @@
                                  BorderBrush="{StaticResource AccentColor}" 
                                  Margin="0,0,10,0"
                                  Text="Search Ingredients"/>
-                        <Button Width="30" 
+                        <Button x:Name="AddIngredientButton" Width="30" 
                                 Height="30" 
                                 Content="+" 
                                 Background="{StaticResource AccentColor}" 
-                                Foreground="{StaticResource TextColor}"/>
+                                Foreground="{StaticResource TextColor}"
+                                Click="AddIngredientButton_Click"/>
                     </StackPanel>
 
                     <!-- Space for Ingredient List -->
