@@ -6,14 +6,21 @@
         <TextBlock Text="Add New Recipe" Foreground="#FFFFFF" FontSize="20" Margin="0,0,0,20" />
 
         <Grid Margin="0,0,0,10">
-            <TextBox Width="200" Height="30" Background="#23272A" 
+            <TextBox x:Name="RecipeTitleTextBox" Width="200" Height="30" Background="#23272A" 
                      Foreground="#FFFFFF" BorderBrush="#7289DA" />
-            <TextBlock Text="Recipe Name" Foreground="#A9A9A9" 
+            <TextBlock Text="Recipe Title" Foreground="#A9A9A9" 
                        VerticalAlignment="Center" Margin="5,0,0,0"/>
         </Grid>
 
         <Grid Margin="0,0,0,10">
-            <TextBox Width="200" Height="30" Background="#23272A" 
+            <TextBox x:Name="RecipeURLTextBox" Width="200" Height="30" Background="#23272A"
+                     Foreground="#FFFFFF" BorderBrush="#7289DA"/>
+            <TextBlock Text="Recipe URL" Foreground="#A9A9A9" 
+                       VerticalAlignment="Center" Margin="5,0,0,0"/>
+        </Grid>
+        
+        <Grid Margin="0,0,0,10">
+            <TextBox x:Name="RecipeIngredientsTextBox" Width="200" Height="30" Background="#23272A" 
                      Foreground="#FFFFFF" BorderBrush="#7289DA" />
             <TextBlock Text="Ingredients" Foreground="#A9A9A9" 
                        VerticalAlignment="Center" Margin="5,0,0,0"/>
