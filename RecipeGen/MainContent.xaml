@@ -73,18 +73,24 @@
                                 Background="{StaticResource AccentColor}" 
                                 Foreground="{StaticResource TextColor}"
                                 Click="AddPantryItemButton_Click"/>
-
                     </StackPanel>
 
                     <!-- Space for Ingredient List -->
                     <ScrollViewer Grid.Row="1" Background="{StaticResource SecondaryBackground}" Padding="10">
-                        <ListBox x:Name="PantryData" Background="{StaticResource SecondaryBackground}" Foreground="{StaticResource TextColor}" SelectionChanged="PantryData_SelectionChanged">
+                        <ListBox x:Name="PantryData" 
+                                 Background="{StaticResource SecondaryBackground}" 
+                                 Foreground="{StaticResource TextColor}" 
+                                 SelectionChanged="PantryData_SelectionChanged"
+                                 ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                 ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                                 MaxHeight="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType=ScrollViewer}}">
                             <!-- Items will be added here dynamically -->
                         </ListBox>
                     </ScrollViewer>
                 </Grid>
             </TabItem>
 
+            <!-- Ingredients Tab -->
             <TabItem Header="Ingredients">
                 <Grid Margin="10">
                     <Grid.RowDefinitions>
@@ -92,30 +98,35 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
 
-                    <!-- Search and Add Button for Recipes -->
+                    <!-- Search and Add Button for Ingredients -->
                     <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="0,0,0,10">
                         <TextBox Width="200" 
-                     Height="30" 
-                     Background="{StaticResource SecondaryBackground}" 
-                     Foreground="{StaticResource TextColor}" 
-                     BorderBrush="{StaticResource AccentColor}" 
-                     Margin="0,0,10,0"
-                     Text="Search Ingredients"/>
+                                 Height="30" 
+                                 Background="{StaticResource SecondaryBackground}" 
+                                 Foreground="{StaticResource TextColor}" 
+                                 BorderBrush="{StaticResource AccentColor}" 
+                                 Margin="0,0,10,0"
+                                 Text="Search Ingredients"/>
                         <Button x:Name="AddIngredientButton" Width="30" 
-                    Height="30" 
-                    Content="+" 
-                    Background="{StaticResource AccentColor}" 
-                    Foreground="{StaticResource TextColor}"
-                    Click="AddIngredientButton_Click"/>
+                                Height="30" 
+                                Content="+" 
+                                Background="{StaticResource AccentColor}" 
+                                Foreground="{StaticResource TextColor}"
+                                Click="AddIngredientButton_Click"/>
                     </StackPanel>
 
                     <!-- Space for Ingredients -->
                     <ScrollViewer Grid.Row="1" Background="{StaticResource SecondaryBackground}" Padding="10">
-                        <ListBox x:Name="IngredientsListPlaceholder" Background="{StaticResource SecondaryBackground}" Foreground="{StaticResource TextColor}" SelectionChanged="IngredientsListPlaceholder_SelectionChanged">
+                        <ListBox x:Name="IngredientsListPlaceholder" 
+                                 Background="{StaticResource SecondaryBackground}" 
+                                 Foreground="{StaticResource TextColor}" 
+                                 SelectionChanged="IngredientsListPlaceholder_SelectionChanged"
+                                 ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                 ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                                 MaxHeight="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType=ScrollViewer}}">
                             <!-- Items will be added here dynamically -->
                         </ListBox>
                     </ScrollViewer>
-
                 </Grid>
             </TabItem>
 
