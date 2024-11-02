@@ -6,7 +6,7 @@ namespace RecipeGen
     public partial class MainContent : UserControl
     {
 
-        public static string database_path = "C:\\Users\\luked\\Documents\\recipegen\\RecipeGen\\Data\\database.db";
+        public static string database_path = $"{AppDomain.CurrentDomain.BaseDirectory}\\Data\\database.db";
 
         public MainContent()
         {

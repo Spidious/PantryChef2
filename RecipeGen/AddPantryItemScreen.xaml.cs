@@ -45,6 +45,7 @@ namespace RecipeGen
                 FROM ingredients
                 WHERE name IN ({formattedItems});
             ";
+            MessageBox.Show($"{MainContent.database_path}", "Title of the Message Box", MessageBoxButton.OK, MessageBoxImage.Information);
 
             // Run the query in the Database
             using (var connection = new SQLiteConnection($"Data Source={MainContent.database_path}"))
