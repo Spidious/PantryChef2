@@ -35,6 +35,7 @@ namespace RecipeGen
                 string RecipeTitle = RecipeTitleTextBox.Text;
                 string RecipeURL = RecipeURLTextBox.Text;
                 string RecipeIngredients = RecipeIngredientsTextBox.Text ;
+                RecipeIngredients.ToLower();
                 string[] ingredients = RecipeIngredients.Split(',');
                 string insert_recipe = "INSERT INTO recipe (title,url) VALUES (@title,@url)";
                 using (SQLiteCommand command = new SQLiteCommand(insert_recipe, connection))
