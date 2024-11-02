@@ -1,21 +1,17 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\luked\\Documents\\recipegen\\",
+  "WorkspaceRootPath": "C:\\Users\\adr3wb\\source\\repos\\RecipeGen\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D20E3EDB-A799-4FFF-8F7C-C66005BB201E}|RecipeGen\\RecipeGen.csproj|c:\\users\\luked\\documents\\recipegen\\recipegen\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{D20E3EDB-A799-4FFF-8F7C-C66005BB201E}|RecipeGen\\RecipeGen.csproj|c:\\users\\adr3wb\\source\\repos\\recipegen\\recipegen\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{D20E3EDB-A799-4FFF-8F7C-C66005BB201E}|RecipeGen\\RecipeGen.csproj|solutionrelative:recipegen\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D20E3EDB-A799-4FFF-8F7C-C66005BB201E}|RecipeGen\\RecipeGen.csproj|c:\\users\\luked\\documents\\recipegen\\recipegen\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{D20E3EDB-A799-4FFF-8F7C-C66005BB201E}|RecipeGen\\RecipeGen.csproj|c:\\users\\adr3wb\\source\\repos\\recipegen\\recipegen\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D20E3EDB-A799-4FFF-8F7C-C66005BB201E}|RecipeGen\\RecipeGen.csproj|solutionrelative:recipegen\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D20E3EDB-A799-4FFF-8F7C-C66005BB201E}|RecipeGen\\RecipeGen.csproj|C:\\Users\\luked\\Documents\\recipegen\\recipegen\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D20E3EDB-A799-4FFF-8F7C-C66005BB201E}|RecipeGen\\RecipeGen.csproj|solutionrelative:recipegen\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D20E3EDB-A799-4FFF-8F7C-C66005BB201E}|RecipeGen\\RecipeGen.csproj|C:\\Users\\luked\\Documents\\recipegen\\recipegen\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{D20E3EDB-A799-4FFF-8F7C-C66005BB201E}|RecipeGen\\RecipeGen.csproj|c:\\users\\adr3wb\\source\\repos\\recipegen\\recipegen\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{D20E3EDB-A799-4FFF-8F7C-C66005BB201E}|RecipeGen\\RecipeGen.csproj|solutionrelative:recipegen\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     }
   ],
@@ -25,32 +21,50 @@
       "VerticalTabListWidth": 176,
       "DocumentGroups": [
         {
-          "DockedWidth": 200,
+          "DockedWidth": 180,
           "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "MainWindow.xaml",
-              "DocumentMoniker": "C:\\Users\\luked\\Documents\\recipegen\\RecipeGen\\MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\adr3wb\\source\\repos\\RecipeGen\\RecipeGen\\MainWindow.xaml",
               "RelativeDocumentMoniker": "RecipeGen\\MainWindow.xaml",
-              "ToolTip": "C:\\Users\\luked\\Documents\\recipegen\\RecipeGen\\MainWindow.xaml*",
-              "RelativeToolTip": "RecipeGen\\MainWindow.xaml*",
+              "ToolTip": "C:\\Users\\adr3wb\\source\\repos\\RecipeGen\\RecipeGen\\MainWindow.xaml",
+              "RelativeToolTip": "RecipeGen\\MainWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2024-11-02T03:28:21.408Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "App.xaml",
-              "DocumentMoniker": "C:\\Users\\luked\\Documents\\recipegen\\RecipeGen\\App.xaml",
+              "DocumentMoniker": "C:\\Users\\adr3wb\\source\\repos\\RecipeGen\\RecipeGen\\App.xaml",
               "RelativeDocumentMoniker": "RecipeGen\\App.xaml",
-              "ToolTip": "C:\\Users\\luked\\Documents\\recipegen\\RecipeGen\\App.xaml",
+              "ToolTip": "C:\\Users\\adr3wb\\source\\repos\\RecipeGen\\RecipeGen\\App.xaml",
               "RelativeToolTip": "RecipeGen\\App.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2024-11-02T03:28:13.201Z",
               "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 220,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             }
           ]
         }
@@ -58,14 +72,14 @@
     },
     {
       "Orientation": 0,
-      "VerticalTabListWidth": 165,
+      "VerticalTabListWidth": 256,
       "FloatingWindowState": {
-        "Id": "0bd7ea16-cd8a-4592-9a47-4daac9a05759",
-        "Display": 1,
-        "X": 1083,
-        "Y": 233,
-        "Width": 800,
-        "Height": 600,
+        "Id": "a9da05ef-32df-4725-9dcf-9e5d3893c238",
+        "Display": 0,
+        "X": 347,
+        "Y": 267,
+        "Width": 3098,
+        "Height": 1130,
         "WindowState": 0
       },
       "DocumentGroups": [
@@ -77,26 +91,13 @@
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "MainWindow.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\luked\\Documents\\recipegen\\RecipeGen\\MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\adr3wb\\source\\repos\\RecipeGen\\RecipeGen\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "RecipeGen\\MainWindow.xaml.cs",
-              "ToolTip": "C:\\Users\\luked\\Documents\\recipegen\\RecipeGen\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\adr3wb\\source\\repos\\RecipeGen\\RecipeGen\\MainWindow.xaml.cs",
               "RelativeToolTip": "RecipeGen\\MainWindow.xaml.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAACcAAABCAAAA",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGIAAABGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-02T14:34:12.238Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "AssemblyInfo.cs",
-              "DocumentMoniker": "C:\\Users\\luked\\Documents\\recipegen\\RecipeGen\\AssemblyInfo.cs",
-              "RelativeDocumentMoniker": "RecipeGen\\AssemblyInfo.cs",
-              "ToolTip": "C:\\Users\\luked\\Documents\\recipegen\\RecipeGen\\AssemblyInfo.cs",
-              "RelativeToolTip": "RecipeGen\\AssemblyInfo.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-02T03:28:24.1Z",
+              "WhenOpened": "2024-11-02T15:01:58.134Z",
               "EditorCaption": ""
             }
           ]

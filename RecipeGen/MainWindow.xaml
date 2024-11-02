@@ -17,20 +17,28 @@
 
     <!-- Main Content with Tabs -->
     <Grid Background="{StaticResource PrimaryBackground}" Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="29*"/>
+            <ColumnDefinition Width="10*"/>
+        </Grid.ColumnDefinitions>
         <TabControl Background="{StaticResource PrimaryBackground}"
                     BorderBrush="{StaticResource AccentColor}"
-                    Foreground="{StaticResource TextColor}">
+                    Foreground="{StaticResource TextColor}" Grid.ColumnSpan="2">
 
             <!-- Recipes Tab -->
             <TabItem Header="Recipes">
                 <Grid Margin="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="245*"/>
+                        <ColumnDefinition Width="509*"/>
+                    </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
 
                     <!-- Search and Add Button for Recipes -->
-                    <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="0,0,0,10">
+                    <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="0,0,0,10" Grid.ColumnSpan="2">
                         <TextBox Width="200" 
                                  Height="30" 
                                  Background="{StaticResource SecondaryBackground}" 
@@ -47,7 +55,7 @@
                     </StackPanel>
 
                     <!-- Space for Recipe Widgets -->
-                    <ScrollViewer Grid.Row="1" Background="{StaticResource SecondaryBackground}" Padding="10">
+                    <ScrollViewer Grid.Row="1" Background="{StaticResource SecondaryBackground}" Padding="10" Grid.ColumnSpan="2">
                         <StackPanel x:Name="RecipeWidgetsPlaceholder" />
                     </ScrollViewer>
                 </Grid>
@@ -63,7 +71,8 @@
 
                     <!-- Search and Add Button for Pantry -->
                     <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="0,0,0,10">
-                        <TextBox Width="200" 
+                        <TextBox x:Name="ingredient_txtbx"
+                                 Width="200" 
                                  Height="30" 
                                  Background="{StaticResource SecondaryBackground}" 
                                  Foreground="{StaticResource TextColor}" 
