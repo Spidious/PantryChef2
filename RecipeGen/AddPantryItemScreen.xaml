@@ -5,12 +5,10 @@
     <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="20">
         <TextBlock Text="Add New Ingredient" Foreground="#FFFFFF" FontSize="20" Margin="0,0,0,20" />
 
-        <Grid Margin="0,0,0,10">
-            <TextBox Width="200" Height="30" Background="#23272A" 
+        <Grid x:Name="IngredientTextBox" Margin="0,0,0,10">
+            <TextBox Text="Ingredient Name"  Width="200" Height="30" Background="#23272A" 
                      Foreground="#FFFFFF" BorderBrush="#7289DA" 
                      x:Name="IngredientNameTextBox" />
-            <TextBlock Text="Ingredient Name" Foreground="#A9A9A9" 
-                       VerticalAlignment="Center" Margin="5,0,0,0"/>
         </Grid>
 
         <Button Content="Add Ingredient" Width="100" Height="30" 
