@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34714.143
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecipeGen", "RecipeGen\RecipeGen.csproj", "{F7C5AB1E-3000-4D74-BBA8-861E0347700E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecipeGen", "RecipeGen\RecipeGen.csproj", "{D20E3EDB-A799-4FFF-8F7C-C66005BB201E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F7C5AB1E-3000-4D74-BBA8-861E0347700E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F7C5AB1E-3000-4D74-BBA8-861E0347700E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F7C5AB1E-3000-4D74-BBA8-861E0347700E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F7C5AB1E-3000-4D74-BBA8-861E0347700E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D20E3EDB-A799-4FFF-8F7C-C66005BB201E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D20E3EDB-A799-4FFF-8F7C-C66005BB201E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D20E3EDB-A799-4FFF-8F7C-C66005BB201E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D20E3EDB-A799-4FFF-8F7C-C66005BB201E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {AAB0B280-533A-4DD2-BA64-19B079775B45}
+		SolutionGuid = {CAE5D833-6100-42C6-8957-396EE1F0036F}
 	EndGlobalSection
 EndGlobal
