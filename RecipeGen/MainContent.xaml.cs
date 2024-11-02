@@ -1,5 +1,7 @@
-﻿using System.Windows;
+﻿using System.Data.SQLite;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace RecipeGen
 {
@@ -64,18 +66,99 @@ namespace RecipeGen
         // Functions for loading data
         private void LoadRecipes()
         {
-            // Add code to load recipes
+            string query = $@"
+                    SELECT r.title, r.url
+                    FROM recipe r
+                    JOIN recipe_ingredient ri ON r.rid = ri.recipe_id
+                    WHERE r.rid != 1
+                    AND ri.ingredient_id IN (
+                        SELECT ingredient_id
+                        FROM recipe_ingredient
+                        WHERE recipe_id = 1
+                    )
+                    GROUP BY r.rid, r.title, r.url
+                    HAVING COUNT(DISTINCT ri.ingredient_id) = (
+                        SELECT COUNT(*)
+                        FROM recipe_ingredient
+                        WHERE recipe_id = 1
+                    );
+            ";
         }
 
         private void LoadPantry()
         {
-            // Add code to load pantry items
+            string query = $@"
+                    SELECT i.name 
+                    FROM ingredients i 
+                    JOIN recipe_ingredient ri ON i.iid = ri.ingredient_id
+                    JOIN recipe r ON ri.recipe_id = r.rid
+                    WHERE r.rid = 1;
+            ";
+
+
         }
 
         private void LoadIngredients()
         {
-            // Add code to load ingredients
+            string query = @"
+                    SELECT name FROM ingredients;
+            ";
+
+            // Clear previous items
+            IngredientsListPlaceholder.Items.Clear();
+
+            // Create a list to hold the ingredient names
+            List<string> ingredients = new List<string>();
+
+            // Run the query in the Database
+            using (var connection = new SQLiteConnection($"Data Source={MainContent.database_path}"))
+            {
+                connection.Open();
+                using (var command = new SQLiteCommand(query, connection))
+                {
+                    // Execute the command and get a reader
+                    using (SQLiteDataReader reader = command.ExecuteReader())
+                    {
+                        // Read the data
+                        while (reader.Read())
+                        {
+                            // Get the ingredient name and add it to the list
+                            var value = reader["name"].ToString(); // Ensure to convert to string
+                            ingredients.Add(value);
+                        }
+                    }
+                }
+            }
+
+            // Now populate the IngredientsListPlaceholder with ListBoxItems for each ingredient
+            foreach (var ingredient in ingredients)
+            {
+                // Create a ListBoxItem for each ingredient
+                ListBoxItem ingredientItem = new ListBoxItem
+                {
+                    Content = ingredient,
+                    Foreground = (Brush)FindResource("TextColor"), // Use the TextColor from resources
+                    Margin = new Thickness(0, 5, 0, 0) // Add some margin for spacing
+                };
+
+                // Add the ListBoxItem to the IngredientsListPlaceholder
+                IngredientsListPlaceholder.Items.Add(ingredientItem);
+            }
         }
+
+        private void IngredientsListPlaceholder_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (IngredientsListPlaceholder.SelectedItem is ListBoxItem selectedItem)
+            {
+                // Get the selected ingredient
+                string selectedIngredient = selectedItem.Content.ToString();
+
+                // Do something with the selected ingredient
+                Console.WriteLine($"Selected Ingredient: {selectedIngredient}");
+            }
+        }
+
+
 
     }
 }

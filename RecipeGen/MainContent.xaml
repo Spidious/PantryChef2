@@ -105,10 +105,13 @@
                     Click="AddIngredientButton_Click"/>
                     </StackPanel>
 
-                    <!-- Space for Recipe Widgets -->
+                    <!-- Space for Ingredients -->
                     <ScrollViewer Grid.Row="1" Background="{StaticResource SecondaryBackground}" Padding="10">
-                        <StackPanel x:Name="IngredientsListPlaceholder" />
+                        <ListBox x:Name="IngredientsListPlaceholder" Background="{StaticResource SecondaryBackground}" Foreground="{StaticResource TextColor}" SelectionChanged="IngredientsListPlaceholder_SelectionChanged">
+                            <!-- Items will be added here dynamically -->
+                        </ListBox>
                     </ScrollViewer>
+
                 </Grid>
             </TabItem>
 

@@ -6,10 +6,8 @@
         <TextBlock Text="Add New Ingredient" Foreground="#FFFFFF" FontSize="20" Margin="0,0,0,20" />
 
         <Grid Margin="0,0,0,10">
-            <TextBox x:Name="IngredientNameTextBox" Width="200" Height="30" Background="#23272A" 
+            <TextBox x:Name="IngredientNameTextBox" Text="Add Ingredient"  Width="200" Height="30" Background="#23272A" 
                      Foreground="#FFFFFF" BorderBrush="#7289DA" />
-            <TextBlock Text="Ingredient Name" Foreground="#A9A9A9" 
-                       VerticalAlignment="Center" Margin="5,0,0,0"/>
         </Grid>
 
         <Grid Margin="0,0,0,10"/>
