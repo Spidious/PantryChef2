@@ -14,7 +14,7 @@ namespace RecipeGen
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            CancelRequested?.Invoke(); // Raise the event
+            CancelRequested?.Invoke(); // Raise the event to go back
         }
 
         private void AddIngredientButton_Click(object sender, RoutedEventArgs e)
@@ -26,6 +26,5 @@ namespace RecipeGen
         {
             CancelRequested?.Invoke(); // Raise the event to go back
         }
-
     }
 }
