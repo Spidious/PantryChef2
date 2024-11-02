@@ -3,8 +3,29 @@
   "WorkspaceRootPath": "C:\\Users\\luked\\Documents\\recipegen\\",
   "Documents": [
     {
+<<<<<<< Updated upstream
       "AbsoluteMoniker": "D:0:0:{D20E3EDB-A799-4FFF-8F7C-C66005BB201E}|RecipeGen\\RecipeGen.csproj|c:\\users\\luked\\documents\\recipegen\\recipegen\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{D20E3EDB-A799-4FFF-8F7C-C66005BB201E}|RecipeGen\\RecipeGen.csproj|solutionrelative:recipegen\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+=======
+      "AbsoluteMoniker": "D:0:0:{D20E3EDB-A799-4FFF-8F7C-C66005BB201E}|RecipeGen\\RecipeGen.csproj|c:\\users\\luked\\documents\\recipegen\\recipegen\\addrecipescreen.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{D20E3EDB-A799-4FFF-8F7C-C66005BB201E}|RecipeGen\\RecipeGen.csproj|solutionrelative:recipegen\\addrecipescreen.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D20E3EDB-A799-4FFF-8F7C-C66005BB201E}|RecipeGen\\RecipeGen.csproj|c:\\users\\luked\\documents\\recipegen\\recipegen\\addingredientscreen.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{D20E3EDB-A799-4FFF-8F7C-C66005BB201E}|RecipeGen\\RecipeGen.csproj|solutionrelative:recipegen\\addingredientscreen.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+>>>>>>> Stashed changes
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D20E3EDB-A799-4FFF-8F7C-C66005BB201E}|RecipeGen\\RecipeGen.csproj|c:\\users\\luked\\documents\\recipegen\\recipegen\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D20E3EDB-A799-4FFF-8F7C-C66005BB201E}|RecipeGen\\RecipeGen.csproj|solutionrelative:recipegen\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D20E3EDB-A799-4FFF-8F7C-C66005BB201E}|RecipeGen\\RecipeGen.csproj|c:\\users\\luked\\documents\\recipegen\\recipegen\\addrecipescreen.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D20E3EDB-A799-4FFF-8F7C-C66005BB201E}|RecipeGen\\RecipeGen.csproj|solutionrelative:recipegen\\addrecipescreen.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D20E3EDB-A799-4FFF-8F7C-C66005BB201E}|RecipeGen\\RecipeGen.csproj|c:\\users\\luked\\documents\\recipegen\\recipegen\\addingredientscreen.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D20E3EDB-A799-4FFF-8F7C-C66005BB201E}|RecipeGen\\RecipeGen.csproj|solutionrelative:recipegen\\addingredientscreen.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D20E3EDB-A799-4FFF-8F7C-C66005BB201E}|RecipeGen\\RecipeGen.csproj|c:\\users\\luked\\documents\\recipegen\\recipegen\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -31,6 +52,33 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+<<<<<<< Updated upstream
+=======
+              "Title": "AddRecipeScreen.xaml",
+              "DocumentMoniker": "C:\\Users\\luked\\Documents\\recipegen\\RecipeGen\\AddRecipeScreen.xaml",
+              "RelativeDocumentMoniker": "RecipeGen\\AddRecipeScreen.xaml",
+              "ToolTip": "C:\\Users\\luked\\Documents\\recipegen\\RecipeGen\\AddRecipeScreen.xaml",
+              "RelativeToolTip": "RecipeGen\\AddRecipeScreen.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-11-02T15:37:55.303Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AddIngredientScreen.xaml",
+              "DocumentMoniker": "C:\\Users\\luked\\Documents\\recipegen\\RecipeGen\\AddIngredientScreen.xaml",
+              "RelativeDocumentMoniker": "RecipeGen\\AddIngredientScreen.xaml",
+              "ToolTip": "C:\\Users\\luked\\Documents\\recipegen\\RecipeGen\\AddIngredientScreen.xaml",
+              "RelativeToolTip": "RecipeGen\\AddIngredientScreen.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-11-02T15:35:19.961Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+>>>>>>> Stashed changes
               "Title": "MainWindow.xaml",
               "DocumentMoniker": "C:\\Users\\luked\\Documents\\recipegen\\RecipeGen\\MainWindow.xaml",
               "RelativeDocumentMoniker": "RecipeGen\\MainWindow.xaml",
@@ -42,7 +90,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 7,
               "Title": "App.xaml",
               "DocumentMoniker": "C:\\Users\\luked\\Documents\\recipegen\\RecipeGen\\App.xaml",
               "RelativeDocumentMoniker": "RecipeGen\\App.xaml",
@@ -61,34 +109,80 @@
       "VerticalTabListWidth": 165,
       "FloatingWindowState": {
         "Id": "0bd7ea16-cd8a-4592-9a47-4daac9a05759",
+<<<<<<< Updated upstream
         "Display": 1,
         "X": 1083,
         "Y": 233,
         "Width": 800,
         "Height": 600,
+=======
+        "Display": 0,
+        "X": 2276,
+        "Y": 0,
+        "Width": 1169,
+        "Height": 1397,
+>>>>>>> Stashed changes
         "WindowState": 0
       },
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
               "$type": "Document",
+<<<<<<< Updated upstream
               "DocumentIndex": 1,
+=======
+              "DocumentIndex": 3,
+              "Title": "AddRecipeScreen.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\luked\\Documents\\recipegen\\RecipeGen\\AddRecipeScreen.xaml.cs",
+              "RelativeDocumentMoniker": "RecipeGen\\AddRecipeScreen.xaml.cs",
+              "ToolTip": "C:\\Users\\luked\\Documents\\recipegen\\RecipeGen\\AddRecipeScreen.xaml.cs",
+              "RelativeToolTip": "RecipeGen\\AddRecipeScreen.xaml.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-02T15:37:48.007Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AddIngredientScreen.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\luked\\Documents\\recipegen\\RecipeGen\\AddIngredientScreen.xaml.cs",
+              "RelativeDocumentMoniker": "RecipeGen\\AddIngredientScreen.xaml.cs",
+              "ToolTip": "C:\\Users\\luked\\Documents\\recipegen\\RecipeGen\\AddIngredientScreen.xaml.cs",
+              "RelativeToolTip": "RecipeGen\\AddIngredientScreen.xaml.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-02T15:37:09.62Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+>>>>>>> Stashed changes
               "Title": "MainWindow.xaml.cs",
               "DocumentMoniker": "C:\\Users\\luked\\Documents\\recipegen\\RecipeGen\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "RecipeGen\\MainWindow.xaml.cs",
               "ToolTip": "C:\\Users\\luked\\Documents\\recipegen\\RecipeGen\\MainWindow.xaml.cs",
               "RelativeToolTip": "RecipeGen\\MainWindow.xaml.cs",
+<<<<<<< Updated upstream
               "ViewState": "AQIAAAAAAAAAAAAAAAAAACcAAABCAAAA",
+=======
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACIAAAAAAAAA",
+>>>>>>> Stashed changes
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-02T14:34:12.238Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 6,
               "Title": "AssemblyInfo.cs",
               "DocumentMoniker": "C:\\Users\\luked\\Documents\\recipegen\\RecipeGen\\AssemblyInfo.cs",
               "RelativeDocumentMoniker": "RecipeGen\\AssemblyInfo.cs",
