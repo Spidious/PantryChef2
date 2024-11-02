@@ -6,10 +6,12 @@ namespace RecipeGen
     public partial class AddIngredientScreen : UserControl
     {
         public event Action CancelRequested;
+        public event Action AddIngredient;
 
         public AddIngredientScreen()
         {
             InitializeComponent();
+            this.AddIngredient += IngredientQuery;
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
@@ -19,12 +21,12 @@ namespace RecipeGen
 
         private void AddIngredientButton_Click(object sender, RoutedEventArgs e)
         {
-            // Logic to add an ingredient
+            AddIngredient?.Invoke(); 
         }
 
-        private void BackButton_Click(object sender, RoutedEventArgs e)
+        private void IngredientQuery()
         {
-            CancelRequested?.Invoke(); // Raise the event to go back
+            ;
         }
     }
 }
