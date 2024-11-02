@@ -26,7 +26,7 @@ namespace RecipeGen
 
         private void IngredientQuery()
         {
-            ;
+            CancelRequested?.Invoke();
         }
     }
 }
