@@ -28,7 +28,7 @@ namespace RecipeGen
         {
             var addIngredientScreen = new AddIngredientScreen();
             this.Content = addIngredientScreen;
-            addIngredientScreen.CancelRequested += ShowMainContent; // Subscribe to 
+            addIngredientScreen.CancelRequested += ShowMainContent; // Subscribe to event
         }
 
         public void ShowMainContent()

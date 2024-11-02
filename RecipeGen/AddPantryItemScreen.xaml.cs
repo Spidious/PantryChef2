@@ -6,11 +6,13 @@ namespace RecipeGen
 {
     public partial class AddPantryItemScreen : UserControl
     {
-        public event Action? CancelRequested; // Make it nullable
+        public event Action? CancelRequested;
+        public event Action AddPantryItem;
 
         public AddPantryItemScreen()
         {
             InitializeComponent();
+            this.AddPantryItem += PantryItemQuery;
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
@@ -31,6 +33,11 @@ namespace RecipeGen
             {
                 MessageBox.Show("Please enter a valid ingredient name.");
             }
+        }
+
+        private void PantryItemQuery()
+        {
+            CancelRequested?.Invoke();
         }
     }
 }
