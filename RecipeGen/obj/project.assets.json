@@ -1215,24 +1215,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\luked\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\adr3wb\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\luked\\Documents\\recipegen\\RecipeGen\\RecipeGen.csproj",
+      "projectUniqueName": "C:\\Users\\adr3wb\\Source\\Repos\\RecipeGen2\\RecipeGen\\RecipeGen.csproj",
       "projectName": "RecipeGen",
-      "projectPath": "C:\\Users\\luked\\Documents\\recipegen\\RecipeGen\\RecipeGen.csproj",
-      "packagesPath": "C:\\Users\\luked\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\luked\\Documents\\recipegen\\RecipeGen\\obj\\",
+      "projectPath": "C:\\Users\\adr3wb\\Source\\Repos\\RecipeGen2\\RecipeGen\\RecipeGen.csproj",
+      "packagesPath": "C:\\Users\\adr3wb\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\adr3wb\\Source\\Repos\\RecipeGen2\\RecipeGen\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\luked\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\adr3wb\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1288,7 +1283,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
