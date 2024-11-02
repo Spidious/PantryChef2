@@ -16,9 +16,9 @@
 [xX]64/
 [x86]/
 [Aa][Rr][Mm]/
-[Oo][Bb][Jj]/
-[Bb]in/
-[Oo]bj/
+#[Oo][Bb][Jj]/
+#[Bb]in/
+#[Oo]bj/
 *.pdb
 *.exe
 *.dll

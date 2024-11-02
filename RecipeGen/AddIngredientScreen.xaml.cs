@@ -27,7 +27,7 @@ namespace RecipeGen
 
         private void IngredientQuery()
         {
-            string connectionStr = "Data Source=C:\\Users\\adr3wb\\Source\\Repos\\RecipeGen2\\RecipeGen\\Data\\database.db;Version =3;";// C: \Users\adr3wb\Source\Repos\RecipeGen\RecipeGen\Data\database.db
+            string connectionStr = "Data Source=;Version =3;";// C: \Users\adr3wb\Source\Repos\RecipeGen\RecipeGen\Data\database.db
             using (SQLiteConnection connection = new SQLiteConnection(connectionStr))
             {
                 connection.Open();

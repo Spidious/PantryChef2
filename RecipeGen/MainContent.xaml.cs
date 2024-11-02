@@ -5,6 +5,7 @@ namespace RecipeGen
 {
     public partial class MainContent : UserControl
     {
+        public static string database_path = ""
         public MainContent()
         {
             InitializeComponent();
