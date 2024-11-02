@@ -3,10 +3,85 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:RecipeGen"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="Recipe Generator" Height="600" Width="800"
+        Background="#2C2F33">
 
+    <Window.Resources>
+        <!-- Define dark mode colors -->
+        <SolidColorBrush x:Key="PrimaryBackground" Color="#2C2F33"/>
+        <SolidColorBrush x:Key="SecondaryBackground" Color="#23272A"/>
+        <SolidColorBrush x:Key="AccentColor" Color="#7289DA"/>
+        <SolidColorBrush x:Key="TextColor" Color="#FFFFFF"/>
+    </Window.Resources>
+
+    <!-- Main Content with Tabs -->
+    <Grid Background="{StaticResource PrimaryBackground}" Margin="10">
+        <TabControl Background="{StaticResource PrimaryBackground}"
+                    BorderBrush="{StaticResource AccentColor}"
+                    Foreground="{StaticResource TextColor}">
+
+            <!-- Recipes Tab -->
+            <TabItem Header="Recipes">
+                <Grid Margin="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Search and Add Button for Recipes -->
+                    <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="0,0,0,10">
+                        <TextBox Width="200" 
+                                 Height="30" 
+                                 Background="{StaticResource SecondaryBackground}" 
+                                 Foreground="{StaticResource TextColor}" 
+                                 BorderBrush="{StaticResource AccentColor}" 
+                                 Margin="0,0,10,0"
+                                 Text="Search Recipes"/>
+                        <Button Width="30" 
+                                Height="30" 
+                                Content="+" 
+                                Background="{StaticResource AccentColor}" 
+                                Foreground="{StaticResource TextColor}"/>
+                    </StackPanel>
+
+                    <!-- Space for Recipe Widgets -->
+                    <ScrollViewer Grid.Row="1" Background="{StaticResource SecondaryBackground}" Padding="10">
+                        <StackPanel x:Name="RecipeWidgetsPlaceholder" />
+                    </ScrollViewer>
+                </Grid>
+            </TabItem>
+
+            <!-- Pantry Tab -->
+            <TabItem Header="Pantry">
+                <Grid Margin="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Search and Add Button for Pantry -->
+                    <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="0,0,0,10">
+                        <TextBox Width="200" 
+                                 Height="30" 
+                                 Background="{StaticResource SecondaryBackground}" 
+                                 Foreground="{StaticResource TextColor}" 
+                                 BorderBrush="{StaticResource AccentColor}" 
+                                 Margin="0,0,10,0"
+                                 Text="Search Ingredients"/>
+                        <Button Width="30" 
+                                Height="30" 
+                                Content="+" 
+                                Background="{StaticResource AccentColor}" 
+                                Foreground="{StaticResource TextColor}"/>
+                    </StackPanel>
+
+                    <!-- Space for Ingredient List -->
+                    <ScrollViewer Grid.Row="1" Background="{StaticResource SecondaryBackground}" Padding="10">
+                        <StackPanel x:Name="IngredientListPlaceholder" />
+                    </ScrollViewer>
+                </Grid>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>

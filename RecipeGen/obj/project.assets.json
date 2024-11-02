@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\luked\\Documents\\recipegen\\RecipeGen\\RecipeGen\\RecipeGen.csproj",
+      "projectUniqueName": "C:\\Users\\luked\\Documents\\recipegen\\RecipeGen\\RecipeGen.csproj",
       "projectName": "RecipeGen",
-      "projectPath": "C:\\Users\\luked\\Documents\\recipegen\\RecipeGen\\RecipeGen\\RecipeGen.csproj",
+      "projectPath": "C:\\Users\\luked\\Documents\\recipegen\\RecipeGen\\RecipeGen.csproj",
       "packagesPath": "C:\\Users\\luked\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\luked\\Documents\\recipegen\\RecipeGen\\RecipeGen\\obj\\",
+      "outputPath": "C:\\Users\\luked\\Documents\\recipegen\\RecipeGen\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
