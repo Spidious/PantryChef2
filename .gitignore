@@ -1,6 +1,36 @@
-*/.vs/*
-.vs
+#*/.vs/*
+#.vs
+#.vs/
+#.vs/*
+#../.vs/
+#obj/
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build results
+#[Dd]ebug/
+#[Rr]elease/
+[xX]64/
+[x86]/
+[Aa][Rr][Mm]/
+#[Oo][Bb][Jj]/
+#[Bb]in/
+#[Oo]bj/
+*.pdb
+*.exe
+*.dll
+*.appx
+*.appxbundle
+
+# Visual Studio files
 .vs/
-.vs/*
-../.vs/
-obj/
+*.vscode/
+*.sln.ide
+
+# Packages
+*.nupkg
+*.snupkg
+packages/
