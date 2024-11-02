@@ -18,3 +18,7 @@ C:\Users\luked\Documents\recipegen\RecipeGen\obj\Debug\net8.0-windows\refint\Rec
 C:\Users\luked\Documents\recipegen\RecipeGen\obj\Debug\net8.0-windows\RecipeGen.pdb
 C:\Users\luked\Documents\recipegen\RecipeGen\obj\Debug\net8.0-windows\RecipeGen.genruntimeconfig.cache
 C:\Users\luked\Documents\recipegen\RecipeGen\obj\Debug\net8.0-windows\ref\RecipeGen.dll
+C:\Users\luked\Documents\recipegen\RecipeGen\obj\Debug\net8.0-windows\AddIngredientScreen.baml
+C:\Users\luked\Documents\recipegen\RecipeGen\obj\Debug\net8.0-windows\AddRecipeScreen.baml
+C:\Users\luked\Documents\recipegen\RecipeGen\obj\Debug\net8.0-windows\AddIngredientScreen.g.cs
+C:\Users\luked\Documents\recipegen\RecipeGen\obj\Debug\net8.0-windows\AddRecipeScreen.g.cs

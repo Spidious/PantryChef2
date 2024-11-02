@@ -10,6 +10,7 @@ namespace RecipeGen
             InitializeComponent();
         }
 
+<<<<<<< Updated upstream
         // Event handler for the "Add Recipe" button in the "Recipes" tab
         private void AddRecipeButton_Click(object sender, RoutedEventArgs e)
         {
@@ -38,6 +39,27 @@ namespace RecipeGen
 
             // Add it to the IngredientListPlaceholder StackPanel
             IngredientListPlaceholder.Children.Add(newIngredient);
+=======
+        private void AddRecipeButton_Click(object sender, RoutedEventArgs e)
+        {
+            var addRecipeScreen = new AddRecipeScreen();
+            this.Content = addRecipeScreen;
+            addRecipeScreen.CancelRequested += ShowMainContent; // Subscribe to event
+        }
+
+        private void AddIngredientButton_Click(object sender, RoutedEventArgs e)
+        {
+            var addIngredientScreen = new AddIngredientScreen();
+            this.Content = addIngredientScreen;
+            addIngredientScreen.CancelRequested += ShowMainContent; // Subscribe to event
+        }
+
+        public void ShowMainContent()
+        {
+            // Optionally, you can add logic to show the main content here.
+            var mainContent = new MainContent(); // This assumes you have a MainContent UserControl
+            this.Content = mainContent; // Or switch back to your original layout
+>>>>>>> Stashed changes
         }
     }
 }

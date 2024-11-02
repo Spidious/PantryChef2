@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="RecipeGen.AddIngredientScreen"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Background="#2C2F33">
+    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+        <TextBlock Text="Add New Ingredient" Foreground="#FFFFFF" FontSize="20" Margin="0,0,0,20" />
+
+        <Grid Margin="0,0,0,10">
+            <TextBox Width="200" Height="30" Background="#23272A" 
+                     Foreground="#FFFFFF" BorderBrush="#7289DA" />
+            <TextBlock Text="Ingredient Name" Foreground="#A9A9A9" 
+                       VerticalAlignment="Center" Margin="5,0,0,0"/>
+        </Grid>
+
+        <Grid Margin="0,0,0,10">
+            <TextBox Width="200" Height="30" Background="#23272A" 
+                     Foreground="#FFFFFF" BorderBrush="#7289DA" />
+            <TextBlock Text="Quantity" Foreground="#A9A9A9" 
+                       VerticalAlignment="Center" Margin="5,0,0,0"/>
+        </Grid>
+
+        <Button Content="Add Ingredient" Width="100" Height="30" 
+                Background="#7289DA" Foreground="#FFFFFF" 
+                Margin="0,10,0,0" Click="AddIngredientButton_Click"/>
+        
+        <Button Content="Back" Width="100" Height="30" 
+                Background="#7289DA" Foreground="#FFFFFF" 
+                Margin="0,10,0,0" Click="BackButton_Click"/>
+        
+        <Button Content="Cancel" Width="100" Height="30" 
+                Background="#7289DA" Foreground="#FFFFFF" 
+                Margin="0,10,0,0" Click="CancelButton_Click" />
+
+    </StackPanel>
+</UserControl>
