@@ -24,3 +24,5 @@ C:\Users\luked\Documents\recipegen\RecipeGen\obj\Debug\net8.0-windows\AddIngredi
 C:\Users\luked\Documents\recipegen\RecipeGen\obj\Debug\net8.0-windows\AddRecipeScreen.g.cs
 C:\Users\luked\Documents\recipegen\RecipeGen\obj\Debug\net8.0-windows\MainContent.baml
 C:\Users\luked\Documents\recipegen\RecipeGen\obj\Debug\net8.0-windows\MainContent.g.cs
+C:\Users\luked\Documents\recipegen\RecipeGen\obj\Debug\net8.0-windows\AddPantryItemScreen.baml
+C:\Users\luked\Documents\recipegen\RecipeGen\obj\Debug\net8.0-windows\AddPantryItemScreen.g.cs

@@ -19,12 +19,7 @@
                        VerticalAlignment="Center" Margin="5,0,0,0"/>
         </Grid>
 
-        <Grid Margin="0,0,0,10">
-            <TextBox Width="200" Height="30" Background="#23272A" 
-                     Foreground="#FFFFFF" BorderBrush="#7289DA" />
-            <TextBlock Text="Instructions" Foreground="#A9A9A9" 
-                       VerticalAlignment="Center" Margin="5,0,0,0"/>
-        </Grid>
+        <Grid Margin="0,0,0,10"/>
 
         <Button Content="Add Recipe" Width="100" Height="30" 
                 Background="#7289DA" Foreground="#FFFFFF" 

@@ -17,6 +17,13 @@ namespace RecipeGen
             addRecipeScreen.CancelRequested += ShowMainContent; // Subscribe to event
         }
 
+        private void AddPantryItemButton_Click(object sender, RoutedEventArgs e)
+        {
+            var addPantryItemScreen = new AddPantryItemScreen();
+            this.Content = addPantryItemScreen;
+            addPantryItemScreen.CancelRequested += ShowMainContent; // Subscribe to event
+        }
+
         private void AddIngredientButton_Click(object sender, RoutedEventArgs e)
         {
             var addIngredientScreen = new AddIngredientScreen();
@@ -26,9 +33,7 @@ namespace RecipeGen
 
         public void ShowMainContent()
         {
-            // Reset content back to the main content
-            var mainContent = new MainContent();
-            this.Content = mainContent; // Or keep a reference to the original MainContent if needed
+            this.Content = new MainContent(); // Reset to the original MainContent
         }
     }
 }
