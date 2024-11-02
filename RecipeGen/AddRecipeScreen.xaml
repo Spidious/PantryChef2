@@ -24,11 +24,7 @@
         <Button Content="Add Recipe" Width="100" Height="30" 
                 Background="#7289DA" Foreground="#FFFFFF" 
                 Margin="0,10,0,0" Click="AddRecipeButton_Click"/>
-        
-        <Button Content="Back" Width="100" Height="30" 
-                Background="#7289DA" Foreground="#FFFFFF" 
-                Margin="0,10,0,0" Click="BackButton_Click"/>
-        
+
         <Button Content="Cancel" Width="100" Height="30" 
                 Background="#7289DA" Foreground="#FFFFFF" 
                 Margin="0,10,0,0" Click="CancelButton_Click" />

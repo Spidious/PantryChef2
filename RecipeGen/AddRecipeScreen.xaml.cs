@@ -21,12 +21,7 @@ namespace RecipeGen
 
         private void AddRecipeButton_Click(object sender, RoutedEventArgs e)
         {
-            // Logic to add an ingredient
-        }
-
-        private void BackButton_Click(object sender, RoutedEventArgs e)
-        {
-            CancelRequested?.Invoke(); // Raise the event to go back
+            AddRecipe?.Invoke();
         }
 
         private void RecipeQuery()
