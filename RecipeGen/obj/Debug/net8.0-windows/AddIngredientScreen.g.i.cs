@@ -52,7 +52,7 @@ namespace RecipeGen {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/RecipeGen;V1.0.0.0;component/addingredientscreen.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/RecipeGen;component/addingredientscreen.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\AddIngredientScreen.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
