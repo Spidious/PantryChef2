@@ -43,7 +43,9 @@
 
                     <!-- Space for Recipe Widgets -->
                     <ScrollViewer Grid.Row="1" Background="{StaticResource SecondaryBackground}" Padding="10">
-                        <StackPanel x:Name="RecipeWidgetsPlaceholder" />
+                        <ListBox x:Name="RecipeData" Background="{StaticResource SecondaryBackground}" Foreground="{StaticResource TextColor}" SelectionChanged="RecipeData_SelectionChanged">
+                            <!-- Items will be added here dynamically -->
+                        </ListBox>
                     </ScrollViewer>
                 </Grid>
             </TabItem>
@@ -76,7 +78,9 @@
 
                     <!-- Space for Ingredient List -->
                     <ScrollViewer Grid.Row="1" Background="{StaticResource SecondaryBackground}" Padding="10">
-                        <StackPanel x:Name="PantryListPlaceholder" />
+                        <ListBox x:Name="PantryData" Background="{StaticResource SecondaryBackground}" Foreground="{StaticResource TextColor}" SelectionChanged="PantryData_SelectionChanged">
+                            <!-- Items will be added here dynamically -->
+                        </ListBox>
                     </ScrollViewer>
                 </Grid>
             </TabItem>

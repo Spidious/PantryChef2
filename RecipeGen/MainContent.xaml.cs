@@ -71,18 +71,64 @@ namespace RecipeGen
                     FROM recipe r
                     JOIN recipe_ingredient ri ON r.rid = ri.recipe_id
                     WHERE r.rid != 1
-                    AND ri.ingredient_id IN (
-                        SELECT ingredient_id
-                        FROM recipe_ingredient
-                        WHERE recipe_id = 1
-                    )
                     GROUP BY r.rid, r.title, r.url
                     HAVING COUNT(DISTINCT ri.ingredient_id) = (
-                        SELECT COUNT(*)
-                        FROM recipe_ingredient
-                        WHERE recipe_id = 1
+                        SELECT COUNT(DISTINCT ri2.ingredient_id)
+                        FROM recipe_ingredient ri2
+                        WHERE ri2.recipe_id = r.rid
+                    ) 
+                    AND COUNT(DISTINCT ri.ingredient_id) = (
+                        SELECT COUNT(DISTINCT ri3.ingredient_id)
+                        FROM recipe_ingredient ri3
+                        WHERE ri3.recipe_id = 1
+                        AND ri3.ingredient_id IN (
+                            SELECT ri4.ingredient_id
+                            FROM recipe_ingredient ri4
+                            WHERE ri4.recipe_id = r.rid
+                        )
                     );
             ";
+
+            // Clear previous items
+            RecipeData.Items.Clear();
+
+            // Create a list to hold the ingredient names
+            List<string> recipes = new List<string>();
+
+            // Run the query in the Database
+            using (var connection = new SQLiteConnection($"Data Source={MainContent.database_path}"))
+            {
+                connection.Open();
+                using (var command = new SQLiteCommand(query, connection))
+                {
+                    // Execute the command and get a reader
+                    using (SQLiteDataReader reader = command.ExecuteReader())
+                    {
+                        // Read the data
+                        while (reader.Read())
+                        {
+                            // Get the ingredient name and add it to the list
+                            var value = reader["title"].ToString(); // Ensure to convert to string
+                            recipes.Add(value);
+                        }
+                    }
+                }
+            }
+
+            // Now populate the IngredientsListPlaceholder with ListBoxItems for each ingredient
+            foreach (var recipe in recipes)
+            {
+                // Create a ListBoxItem for each ingredient
+                ListBoxItem recipeItem = new ListBoxItem
+                {
+                    Content = recipe,
+                    Foreground = (Brush)FindResource("TextColor"), // Use the TextColor from resources
+                    Margin = new Thickness(0, 5, 0, 0) // Add some margin for spacing
+                };
+
+                // Add the ListBoxItem to the IngredientsListPlaceholder
+                RecipeData.Items.Add(recipeItem);
+            }
         }
 
         private void LoadPantry()
@@ -94,7 +140,46 @@ namespace RecipeGen
                     JOIN recipe r ON ri.recipe_id = r.rid
                     WHERE r.rid = 1;
             ";
+            // Clear previous items
+            PantryData.Items.Clear();
 
+            // Create a list to hold the ingredient names
+            List<string> recipes = new List<string>();
+
+            // Run the query in the Database
+            using (var connection = new SQLiteConnection($"Data Source={MainContent.database_path}"))
+            {
+                connection.Open();
+                using (var command = new SQLiteCommand(query, connection))
+                {
+                    // Execute the command and get a reader
+                    using (SQLiteDataReader reader = command.ExecuteReader())
+                    {
+                        // Read the data
+                        while (reader.Read())
+                        {
+                            // Get the ingredient name and add it to the list
+                            var value = reader["name"].ToString(); // Ensure to convert to string
+                            recipes.Add(value);
+                        }
+                    }
+                }
+            }
+
+            // Now populate the IngredientsListPlaceholder with ListBoxItems for each ingredient
+            foreach (var recipe in recipes)
+            {
+                // Create a ListBoxItem for each ingredient
+                ListBoxItem recipeItem = new ListBoxItem
+                {
+                    Content = recipe,
+                    Foreground = (Brush)FindResource("TextColor"), // Use the TextColor from resources
+                    Margin = new Thickness(0, 5, 0, 0) // Add some margin for spacing
+                };
+
+                // Add the ListBoxItem to the IngredientsListPlaceholder
+                PantryData.Items.Add(recipeItem);
+            }
 
         }
 
@@ -158,7 +243,28 @@ namespace RecipeGen
             }
         }
 
+        private void PantryData_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (PantryData.SelectedItem is ListBoxItem selectedItem)
+            {
+                // Get the selected ingredient
+                string selectedIngredient = selectedItem.Content.ToString();
 
+                // Do something with the selected ingredient
+                Console.WriteLine($"Selected Ingredient: {selectedIngredient}");
+            }
+        }
 
+        private void RecipeData_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (RecipeData.SelectedItem is ListBoxItem selectedItem)
+            {
+                // Get the selected ingredient
+                string selectedIngredient = selectedItem.Content.ToString();
+
+                // Do something with the selected ingredient
+                Console.WriteLine($"Selected Ingredient: {selectedIngredient}");
+            }
+        }
     }
 }
