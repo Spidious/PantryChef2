@@ -502,5 +502,26 @@ namespace RecipeGen
 
             }
         }
+
+        private void RecipeItem_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            // Get the clicked recipe
+            var border = sender as Border;
+            if (border != null)
+            {
+                var recipe = border.DataContext as RecipeItem; // Replace with your actual class name
+                if (recipe != null && !string.IsNullOrEmpty(recipe.Url))
+                {
+                    // Open the URL in the default web browser
+                    System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
+                    {
+                        FileName = recipe.Url,
+                        UseShellExecute = true
+                    });
+                }
+            }
+        }
+
+
     }
 }

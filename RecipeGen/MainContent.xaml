@@ -68,19 +68,20 @@
                         </ListBox.ItemsPanel>
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <Border Margin="5" Background="{StaticResource SecondaryBackground}" CornerRadius="5">
+                                <Border Margin="5" Background="{StaticResource SecondaryBackground}" CornerRadius="5" MouseDown="RecipeItem_MouseDown">
                                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                                        <!-- Image for the recipe -->
                                         <Image Source="{Binding ImageSource}" Width="150" Height="100" Stretch="UniformToFill" />
                                         <TextBlock Text="{Binding Name}" 
-                                                   Foreground="{StaticResource TextColor}" 
-                                                   HorizontalAlignment="Left" 
-                                                   VerticalAlignment="Center" 
-                                                   Margin="10,0,20,0" />
+                                               Foreground="{StaticResource TextColor}" 
+                                               HorizontalAlignment="Left" 
+                                               VerticalAlignment="Center" 
+                                               Margin="10,0,20,0" />
                                     </StackPanel>
                                 </Border>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
+
+
 
                     </ListBox>
                 </Grid>
