@@ -635,6 +635,22 @@ namespace RecipeGen
             }
         }
 
+        private void SearchRecipeTextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (SearchRecipeTextBox.Text == "Search Recipes")
+            {
+                SearchRecipeTextBox.Text = string.Empty;
+            }
+        }
+
+        private void SearchRecipeTextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(SearchRecipeTextBox.Text))
+            {
+                SearchRecipeTextBox.Text = "Search Recipes";
+            }
+        }
+
 
     }
 }

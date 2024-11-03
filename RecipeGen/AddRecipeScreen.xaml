@@ -7,17 +7,23 @@
 
         <Grid Margin="0,0,0,10">
             <TextBox Text="Title" x:Name="RecipeTitleTextBox" Width="200" Height="30" Background="#23272A" 
-                     Foreground="#FFFFFF" BorderBrush="#7289DA" />
+                     Foreground="#FFFFFF" BorderBrush="#7289DA" 
+                     GotFocus="RecipeTitleTextBox_GotFocus"
+                    LostFocus="RecipeTitleTextBox_LostFocus"/>
         </Grid>
 
         <Grid Margin="0,0,0,10">
             <TextBox Text="URL" x:Name="RecipeURLTextBox" Width="200" Height="30" Background="#23272A"
-                     Foreground="#FFFFFF" BorderBrush="#7289DA"/>
+                     Foreground="#FFFFFF" BorderBrush="#7289DA"
+                     GotFocus="RecipeURLTextBox_GotFocus"
+                    LostFocus="RecipeURLTextBox_LostFocus"/>
         </Grid>
         
         <Grid Margin="0,0,0,10">
             <TextBox Text="Ingredients" x:Name="RecipeIngredientsTextBox" Width="200" Height="30" Background="#23272A" 
-                     Foreground="#FFFFFF" BorderBrush="#7289DA" />
+                     Foreground="#FFFFFF" BorderBrush="#7289DA" 
+                     GotFocus="RecipeIngredientsTextBox_GotFocus"
+                    LostFocus="RecipeIngredientsTextBox_LostFocus"/>
         </Grid>
 
         <Grid Margin="0,0,0,10"/>
