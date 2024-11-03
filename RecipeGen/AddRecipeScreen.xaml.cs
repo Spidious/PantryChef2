@@ -92,5 +92,50 @@ namespace RecipeGen
             }
             CancelRequested?.Invoke(); // Raise event to go back
         }
+        private void RecipeTitleTextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (RecipeTitleTextBox.Text == "Title")
+            {
+                RecipeTitleTextBox.Text = string.Empty;
+            }
+        }
+
+        private void RecipeTitleTextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(RecipeTitleTextBox.Text))
+            {
+                RecipeTitleTextBox.Text = "Title";
+            }
+        }
+        private void RecipeURLTextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (RecipeURLTextBox.Text == "URL")
+            {
+                RecipeURLTextBox.Text = string.Empty;
+            }
+        }
+
+        private void RecipeURLTextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(RecipeURLTextBox.Text))
+            {
+                RecipeURLTextBox.Text = "URL";
+            }
+        }
+        private void RecipeIngredientsTextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (RecipeIngredientsTextBox.Text == "Ingredients")
+            {
+                RecipeIngredientsTextBox.Text = string.Empty;
+            }
+        }
+
+        private void RecipeIngredientsTextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(RecipeIngredientsTextBox.Text))
+            {
+                RecipeIngredientsTextBox.Text = "Ingredients";
+            }
+        }
     }
 }

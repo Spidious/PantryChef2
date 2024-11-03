@@ -328,7 +328,7 @@ namespace RecipeGen
             {
                 // Get the selected ingredient
                 string selectedIngredient = selectedItem.Content.ToString();
-
+                
                 // Do something with the selected ingredient
                 Console.WriteLine($"Selected Ingredient: {selectedIngredient}");
             }
@@ -571,6 +571,22 @@ namespace RecipeGen
             if (string.IsNullOrWhiteSpace(SearchIngredientsTextBox.Text))
             {
                 SearchIngredientsTextBox.Text = "Search Ingredients";
+            }
+        }
+
+        private void SearchRecipeTextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (SearchRecipeTextBox.Text == "Search Recipes")
+            {
+                SearchRecipeTextBox.Text = string.Empty;
+            }
+        }
+
+        private void SearchRecipeTextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(SearchRecipeTextBox.Text))
+            {
+                SearchRecipeTextBox.Text = "Search Recipes";
             }
         }
 

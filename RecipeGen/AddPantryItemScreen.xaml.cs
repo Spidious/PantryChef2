@@ -59,5 +59,21 @@ namespace RecipeGen
             CancelRequested?.Invoke();
 
         }
+
+        private void IngredientTextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (IngredientNameTextBox.Text == "Ingredient Name")
+            {
+                IngredientNameTextBox.Text = string.Empty;
+            }
+        }
+
+        private void IngredientTextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(IngredientNameTextBox.Text))
+            {
+                IngredientNameTextBox.Text = "Ingredient Name";
+            }
+        }
     }
 }

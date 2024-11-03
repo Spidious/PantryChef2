@@ -7,7 +7,9 @@
 
         <Grid Margin="0,0,0,10">
             <TextBox x:Name="IngredientNameTextBox" Text="Add Ingredient"  Width="200" Height="30" Background="#23272A" 
-                     Foreground="#FFFFFF" BorderBrush="#7289DA" />
+                     Foreground="#FFFFFF" BorderBrush="#7289DA" 
+                     GotFocus="IngredientNameTextBox_GotFocus"
+                     LostFocus="IngredientNameTextBox_LostFocus"/>
         </Grid>
 
         <Grid Margin="0,0,0,10"/>

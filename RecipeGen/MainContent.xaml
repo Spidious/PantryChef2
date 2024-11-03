@@ -46,7 +46,9 @@
                      Margin="0,0,10,0"
                      Text="Search Recipes"
                      x:Name="SearchRecipeTextBox"
-                     KeyDown="Recipe_KeyDown"/>
+                     KeyDown="Recipe_KeyDown"
+                     GotFocus="SearchRecipeTextBox_GotFocus"
+                     LostFocus="SearchRecipeTextBox_LostFocus"/>
                         <Button x:Name="AddRecipeButton" Width="30" 
                     Height="30" 
                     Content="+" 

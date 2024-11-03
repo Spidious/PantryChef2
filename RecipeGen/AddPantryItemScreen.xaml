@@ -8,7 +8,9 @@
         <Grid x:Name="IngredientTextBox" Margin="0,0,0,10">
             <TextBox Text="Ingredient Name"  Width="200" Height="30" Background="#23272A" 
                      Foreground="#FFFFFF" BorderBrush="#7289DA" 
-                     x:Name="IngredientNameTextBox" />
+                     x:Name="IngredientNameTextBox" 
+                      GotFocus="IngredientTextBox_GotFocus"
+                     LostFocus="IngredientTextBox_LostFocus"/>
         </Grid>
 
         <Button Content="Add Ingredient" Width="100" Height="30" 
