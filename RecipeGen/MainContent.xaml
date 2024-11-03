@@ -32,7 +32,9 @@
                                  Foreground="{StaticResource TextColor}" 
                                  BorderBrush="{StaticResource AccentColor}" 
                                  Margin="0,0,10,0"
-                                 Text="Search Recipes"/>
+                                 Text="Search Recipes"
+                                 x:Name="SearchRecipeTextBox"
+                                 KeyDown="Recipe_KeyDown"/>
                         <Button x:Name="AddRecipeButton" Width="30" 
                                 Height="30" 
                                 Content="+" 
@@ -66,7 +68,10 @@
                                  Foreground="{StaticResource TextColor}" 
                                  BorderBrush="{StaticResource AccentColor}" 
                                  Margin="0,0,10,0"
-                                 Text="Search Ingredients"/>
+                                 Text="Search Ingredients"
+                                 x:Name="SearchPantryTextBox"
+                                 KeyDown="Pantry_KeyDown"/>
+                        
                         <Button x:Name="AddPantryItemButton" Width="30" 
                                 Height="30" 
                                 Content="+" 
@@ -106,7 +111,9 @@
                                  Foreground="{StaticResource TextColor}" 
                                  BorderBrush="{StaticResource AccentColor}" 
                                  Margin="0,0,10,0"
-                                 Text="Search Ingredients"/>
+                                 Text="Search Ingredients"
+                                 x:Name="SearchIngredientsTextBox"
+                                 KeyDown="Ingredients_KeyDown"/>
                         <Button x:Name="AddIngredientButton" Width="30" 
                                 Height="30" 
                                 Content="+" 
