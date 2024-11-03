@@ -90,9 +90,6 @@ namespace RecipeGen
                 )
             );";
 
-            // Clear previous items
-            RecipeData.Items.Clear();
-
             // Create a list to store the RecipeItems
             List<RecipeItem> recipes = new List<RecipeItem>();
 
@@ -124,10 +121,10 @@ namespace RecipeGen
                 }
             }
 
-            // Bind the list to RecipeData's ItemsSource to display in the ListBox
+            // Set the ItemsSource to the new list of RecipeItems
             RecipeData.ItemsSource = recipes;
-
         }
+
 
 
         private void LoadPantry()
@@ -405,8 +402,6 @@ namespace RecipeGen
 
                 string input = SearchRecipeTextBox.Text;
                 input.ToLower();
-                // Clear previous items
-                RecipeData.Items.Clear();
 
                 // Create a list to hold the ingredient names
                 List<string> recipes = new List<string>();
@@ -442,9 +437,6 @@ namespace RecipeGen
                         Foreground = (Brush)FindResource("TextColor"), // Use the TextColor from resources
                         Margin = new Thickness(0, 5, 0, 0) // Add some margin for spacing
                     };
-
-                    // Add the ListBoxItem to the IngredientsListPlaceholder
-                    RecipeData.Items.Add(recipeItem);
                 }
             }
         }
