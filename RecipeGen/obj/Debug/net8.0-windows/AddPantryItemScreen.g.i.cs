@@ -68,7 +68,7 @@ namespace RecipeGen {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/RecipeGen;component/addpantryitemscreen.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/RecipeGen;V1.0.0.0;component/addpantryitemscreen.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\AddPantryItemScreen.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

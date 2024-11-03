@@ -124,7 +124,7 @@ namespace RecipeGen {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/RecipeGen;V1.0.0.0;component/maincontent.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/RecipeGen;component/maincontent.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\MainContent.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
