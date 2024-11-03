@@ -551,7 +551,7 @@ namespace RecipeGen
 
         }
 
-        private void Recipe_KeyDown(object sender, KeyEventArgs e)
+        private async void Recipe_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
             {
@@ -578,10 +578,45 @@ namespace RecipeGen
                     ) AND r.title LIKE @name;";
 
                 string input = SearchRecipeTextBox.Text;
-                input.ToLower();
+                input = input.ToLower();
+
+                await load_recipe(input, query);
 
 
             }
+        }
+
+        private async Task load_recipe(String input, String query)
+        {
+            //RecipeData.Items.Clear();
+            List<RecipeItem> recipes = new List<RecipeItem>();
+
+            using (var connection = new SQLiteConnection($"Data Source={MainContent.database_path}"))
+            {
+                connection.Open();
+                using (var command = new SQLiteCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@name", "%" + input + "%");
+                    using (SQLiteDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            string title = reader["title"].ToString();
+                            string url = reader["url"].ToString();
+
+                            // Fetch the first image from the recipe URL
+                            var recipeImage = await FetchFirstImageFromUrl(url);
+
+                            // Create a new RecipeItem and add it to the list
+                            var recipeItem = new RecipeItem(title, url, recipeImage);
+                            recipes.Add(recipeItem);
+                        }
+                    }
+                }
+            }
+
+            // Set the ItemsSource to the new list of RecipeItems
+            RecipeData.ItemsSource = recipes;
         }
 
         private void RecipeItem_MouseDown(object sender, MouseButtonEventArgs e)
