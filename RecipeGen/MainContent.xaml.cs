@@ -14,7 +14,7 @@ namespace RecipeGen
 {
     public partial class MainContent : UserControl
     {
-        public static string database_path = $"{AppDomain.CurrentDomain.BaseDirectory}\\Data\\database.db";
+        public static string database_path = $"{AppDomain.CurrentDomain.BaseDirectory}Data\\database.db";
 
         public MainContent()
         {
@@ -322,17 +322,78 @@ namespace RecipeGen
             }
         }
 
-        private void IngredientsListPlaceholder_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void IngredientsListPlaceholder_SelectionChanged(object sender, MouseButtonEventArgs e)
         {
             if (IngredientsListPlaceholder.SelectedItem is ListBoxItem selectedItem)
             {
                 // Get the selected ingredient
                 string selectedIngredient = selectedItem.Content.ToString();
 
-                // Do something with the selected ingredient
-                Console.WriteLine($"Selected Ingredient: {selectedIngredient}");
+                AddIngredientToRecipe(selectedIngredient);
             }
         }
+
+        public void AddIngredientToRecipe(string ingredientName)
+        {
+            using (var connection = new SQLiteConnection($"Data Source={MainContent.database_path}"))
+            {
+                connection.Open();
+
+                // Query to get the iid for the given ingredient name
+                var getIidQuery = @"
+            SELECT iid 
+            FROM ingredients 
+            WHERE name = @IngredientName 
+            LIMIT 1;";
+
+                // Execute the query to get the iid
+                int? ingredientId = null;
+                using (var getIidCommand = new SQLiteCommand(getIidQuery, connection))
+                {
+                    getIidCommand.Parameters.AddWithValue("@IngredientName", ingredientName);
+                    var result = getIidCommand.ExecuteScalar();
+
+                    if (result != null)
+                    {
+                        ingredientId = Convert.ToInt32(result);
+                    }
+                }
+
+                // If an iid was found, attempt to insert it into recipe_ingredient
+                if (ingredientId.HasValue)
+                {
+                    var insertQuery = @"
+                INSERT INTO recipe_ingredient (ingredient_id, recipe_id)
+                VALUES (@IngredientId, 1)
+                ON CONFLICT(ingredient_id, recipe_id) DO NOTHING;";
+
+                    using (var insertCommand = new SQLiteCommand(insertQuery, connection))
+                    {
+                        insertCommand.Parameters.AddWithValue("@IngredientId", ingredientId.Value);
+                        var rowsAffected = insertCommand.ExecuteNonQuery();
+
+                        if (rowsAffected > 0)
+                        {
+                            Console.WriteLine("Ingredient added to recipe.");
+                        }
+                        else
+                        {
+                            Console.WriteLine("This ingredient is already in the recipe.");
+                        }
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("The ingredient does not exist.");
+                }
+            }
+        }
+
+
+
+
+
+
 
         private void PantryData_SelectionChanged(object sender, MouseButtonEventArgs e)
         {

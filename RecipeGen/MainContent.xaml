@@ -170,7 +170,7 @@
                         <ListBox x:Name="IngredientsListPlaceholder" 
                                  Background="{StaticResource SecondaryBackground}" 
                                  Foreground="{StaticResource TextColor}" 
-                                 SelectionChanged="IngredientsListPlaceholder_SelectionChanged"
+                                 MouseDoubleClick="IngredientsListPlaceholder_SelectionChanged"
                                  ScrollViewer.VerticalScrollBarVisibility="Auto"
                                  ScrollViewer.HorizontalScrollBarVisibility="Auto"
                                  MaxHeight="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType=ScrollViewer}}">
