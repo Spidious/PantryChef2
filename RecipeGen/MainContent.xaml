@@ -133,14 +133,16 @@
                     <ScrollViewer Grid.Row="1" Background="{StaticResource SecondaryBackground}" Padding="10" ScrollViewer.VerticalScrollBarVisibility="Disabled">
                         <ListBox x:Name="PantryData" 
                                  Background="{StaticResource SecondaryBackground}" 
-                                 Foreground="{StaticResource TextColor}" 
-                       
+                                 Foreground="{StaticResource TextColor}"
                                  MouseDoubleClick="PantryData_SelectionChanged"
-                                 ScrollViewer.VerticalScrollBarVisibility="Disabled"
-                                 ScrollViewer.HorizontalScrollBarVisibility="Auto"
-                                 MaxHeight="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType=ScrollViewer}}">
-                            <!-- Items will be added here dynamically -->                           
+                                 ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                 MaxHeight="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType=Grid, AncestorLevel=1}}"
+                                 Grid.Row="1">
+                            <!-- Items will be added here dynamically -->
                         </ListBox>
+
+
                     </ScrollViewer>
                 </Grid>
             </TabItem>
@@ -181,11 +183,13 @@
                                  Background="{StaticResource SecondaryBackground}" 
                                  Foreground="{StaticResource TextColor}" 
                                  MouseDoubleClick="IngredientsListPlaceholder_SelectionChanged"
-                                 ScrollViewer.VerticalScrollBarVisibility="Disabled"
-                                 ScrollViewer.HorizontalScrollBarVisibility="Auto"
-                                 MaxHeight="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType=ScrollViewer}}">
+                                 ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                 MaxHeight="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType=Grid, AncestorLevel=1}}"
+                                 Grid.Row="1">
                             <!-- Items will be added here dynamically -->
                         </ListBox>
+
                     </ScrollViewer>
                 </Grid>
             </TabItem>
