@@ -3,6 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Input;
 
 namespace RecipeGen
 {
@@ -68,35 +69,33 @@ namespace RecipeGen
         private void LoadRecipes()
         {
             string query = $@"
-                    SELECT r.title, r.url
-                    FROM recipe r
-                    JOIN recipe_ingredient ri ON r.rid = ri.recipe_id
-                    WHERE r.rid != 1
-                    GROUP BY r.rid, r.title, r.url
-                    HAVING COUNT(DISTINCT ri.ingredient_id) = (
-                        SELECT COUNT(DISTINCT ri2.ingredient_id)
-                        FROM recipe_ingredient ri2
-                        WHERE ri2.recipe_id = r.rid
-                    ) 
-                    AND COUNT(DISTINCT ri.ingredient_id) = (
-                        SELECT COUNT(DISTINCT ri3.ingredient_id)
-                        FROM recipe_ingredient ri3
-                        WHERE ri3.recipe_id = 1
-                        AND ri3.ingredient_id IN (
-                            SELECT ri4.ingredient_id
-                            FROM recipe_ingredient ri4
-                            WHERE ri4.recipe_id = r.rid
-                        )
-                    );
-            ";
+            SELECT r.title, r.url
+            FROM recipe r
+            JOIN recipe_ingredient ri ON r.rid = ri.recipe_id
+            WHERE r.rid != 1
+            GROUP BY r.rid, r.title, r.url
+            HAVING COUNT(DISTINCT ri.ingredient_id) = (
+                SELECT COUNT(DISTINCT ri2.ingredient_id)
+                FROM recipe_ingredient ri2
+                WHERE ri2.recipe_id = r.rid
+            ) 
+            AND COUNT(DISTINCT ri.ingredient_id) = (
+                SELECT COUNT(DISTINCT ri3.ingredient_id)
+                FROM recipe_ingredient ri3
+                WHERE ri3.recipe_id = 1
+                AND ri3.ingredient_id IN (
+                    SELECT ri4.ingredient_id
+                    FROM recipe_ingredient ri4
+                    WHERE ri4.recipe_id = r.rid
+                )
+            );";
 
             // Clear previous items
             RecipeData.Items.Clear();
 
-            // Create a list to hold the ingredient names
-            List<string> recipes = new List<string>();
+            // Create a list to store the RecipeItems
+            List<RecipeItem> recipes = new List<RecipeItem>();
 
-            // Run the query in the Database
             using (var connection = new SQLiteConnection($"Data Source={MainContent.database_path}"))
             {
                 connection.Open();
@@ -108,29 +107,28 @@ namespace RecipeGen
                         // Read the data
                         while (reader.Read())
                         {
-                            // Get the ingredient name and add it to the list
-                            var value = reader["title"].ToString(); // Ensure to convert to string
-                            recipes.Add(value);
+                            // Create a new RecipeItem and add it to the list
+                            var recipeItem = new RecipeItem
+                            (
+                                reader["title"].ToString(),
+                                reader["url"].ToString()
+                            );
+
+                            // Optionally, show each recipe title for debugging
+                            // MessageBox.Show(recipeItem.Name);
+
+                            // Add to the recipes list
+                            recipes.Add(recipeItem);
                         }
                     }
                 }
             }
 
-            // Now populate the IngredientsListPlaceholder with ListBoxItems for each ingredient
-            foreach (var recipe in recipes)
-            {
-                // Create a ListBoxItem for each ingredient
-                ListBoxItem recipeItem = new ListBoxItem
-                {
-                    Content = recipe,
-                    Foreground = (Brush)FindResource("TextColor"), // Use the TextColor from resources
-                    Margin = new Thickness(0, 5, 0, 0) // Add some margin for spacing
-                };
+            // Bind the list to RecipeData's ItemsSource to display in the ListBox
+            RecipeData.ItemsSource = recipes;
 
-                // Add the ListBoxItem to the IngredientsListPlaceholder
-                RecipeData.Items.Add(recipeItem);
-            }
         }
+
 
         private void LoadPantry()
         {
