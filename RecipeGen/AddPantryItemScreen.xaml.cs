@@ -31,7 +31,7 @@ namespace RecipeGen
         {
             // Get text entry
             string textEntry = IngredientNameTextBox.Text;
-
+            textEntry = textEntry.ToLower();
             // Break at commas, separating into an array, and trim each item
             string[] inputArray = textEntry.Split(", ").Select(item => item.Trim()).ToArray();
 
