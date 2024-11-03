@@ -3,18 +3,21 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Input;
+using System.Windows.Media.Imaging; // Updated for BitmapImage
+using System.IO;
+using System.Net.Http;
+using System.Threading.Tasks; // Added for async Task
 
 namespace RecipeGen
 {
     public partial class MainContent : UserControl
     {
-
         public static string database_path = $"{AppDomain.CurrentDomain.BaseDirectory}\\Data\\database.db";
 
         public MainContent()
         {
             InitializeComponent();
+            LoadRecipes();
         }
 
         private void AddRecipeButton_Click(object sender, RoutedEventArgs e)
@@ -43,7 +46,7 @@ namespace RecipeGen
             this.Content = new MainContent(); // Reset to the original MainContent
         }
 
-        private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private async void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (e.Source is TabControl) // Ensure this event is for the TabControl, not nested controls
             {
@@ -52,7 +55,7 @@ namespace RecipeGen
                 // Check the header of each TabItem and call the corresponding function
                 if (selectedTab?.Header?.ToString() == "Recipes")
                 {
-                    LoadRecipes();
+                    await LoadRecipes(); // Await the async method
                 }
                 else if (selectedTab?.Header?.ToString() == "Pantry")
                 {
@@ -66,7 +69,7 @@ namespace RecipeGen
         }
 
         // Functions for loading data
-        private void LoadRecipes()
+        private async Task LoadRecipes()
         {
             string query = $@"
             SELECT r.title, r.url
@@ -89,9 +92,7 @@ namespace RecipeGen
                     WHERE ri4.recipe_id = r.rid
                 )
             );";
-            
 
-            // Create a list to store the RecipeItems
             List<RecipeItem> recipes = new List<RecipeItem>();
 
             using (var connection = new SQLiteConnection($"Data Source={MainContent.database_path}"))
@@ -99,23 +100,18 @@ namespace RecipeGen
                 connection.Open();
                 using (var command = new SQLiteCommand(query, connection))
                 {
-                    // Execute the command and get a reader
                     using (SQLiteDataReader reader = command.ExecuteReader())
                     {
-                        // Read the data
                         while (reader.Read())
                         {
+                            string title = reader["title"].ToString();
+                            string url = reader["url"].ToString();
+
+                            // Fetch the first image from the recipe URL
+                            var recipeImage = await FetchFirstImageFromUrl(url);
+
                             // Create a new RecipeItem and add it to the list
-                            var recipeItem = new RecipeItem
-                            (
-                                reader["title"].ToString(),
-                                reader["url"].ToString()
-                            );
-
-                            // Optionally, show each recipe title for debugging
-                            // MessageBox.Show(recipeItem.Name);
-
-                            // Add to the recipes list
+                            var recipeItem = new RecipeItem(title, url, recipeImage);
                             recipes.Add(recipeItem);
                         }
                     }
@@ -125,6 +121,101 @@ namespace RecipeGen
             // Set the ItemsSource to the new list of RecipeItems
             RecipeData.ItemsSource = recipes;
         }
+
+        private async Task<ImageSource> FetchFirstImageFromUrl(string url)
+        {
+            // Ensure the URL is valid and absolute
+            if (string.IsNullOrWhiteSpace(url) || !Uri.IsWellFormedUriString(url, UriKind.Absolute))
+            {
+                Console.WriteLine("Invalid URL: " + url);
+                return GetDefaultImage(); // Return the default image for invalid URLs
+            }
+
+            using (var httpClient = new HttpClient())
+            {
+                try
+                {
+                    // Get the HTML from the URL
+                    var htmlResponse = await httpClient.GetStringAsync(url);
+                    var htmlDoc = new HtmlAgilityPack.HtmlDocument();
+                    htmlDoc.LoadHtml(htmlResponse);
+
+                    // Attempt to find images using various XPath expressions
+                    var xPaths = new List<string>
+            {
+                "//img[contains(@class, 'rec-photo')]",
+                "//div[contains(@class, 'image-container')]//img",
+                "//div[contains(@class, 'image')]//img",
+                "//img[contains(@alt, 'recipe')]",
+                "//img" // Fallback to any image if none of the above are found
+            };
+
+                    foreach (var xPath in xPaths)
+                    {
+                        var imgNode = htmlDoc.DocumentNode.SelectSingleNode(xPath);
+                        if (imgNode != null)
+                        {
+                            string imgSrc = imgNode.GetAttributeValue("src", null);
+                            if (!string.IsNullOrEmpty(imgSrc))
+                            {
+                                // Handle relative URLs if needed
+                                if (!imgSrc.StartsWith("http"))
+                                {
+                                    Uri baseUri = new Uri(url);
+                                    imgSrc = new Uri(baseUri, imgSrc).ToString();
+                                }
+
+                                // Download the image
+                                var imageData = await httpClient.GetByteArrayAsync(imgSrc);
+                                using (var ms = new MemoryStream(imageData))
+                                {
+                                    var bitmap = new BitmapImage();
+                                    bitmap.BeginInit();
+                                    bitmap.StreamSource = ms;
+                                    bitmap.CacheOption = BitmapCacheOption.OnLoad;
+                                    bitmap.EndInit();
+                                    bitmap.Freeze(); // Make it cross-thread accessible
+                                    return bitmap; // Return the first valid image found
+                                }
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine($"No image found with XPath: {xPath}");
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error fetching image: " + ex.Message);
+                }
+            }
+
+            return GetDefaultImage(); // Return the default image if no image is found or an error occurs
+        }
+
+        private ImageSource GetDefaultImage()
+        {
+            // Load the default image from the specified URL
+            var uri = "https://thumb.ac-illust.com/13/13ad2992478f065de05c97423b5ef5e1_t.jpeg";
+            var bitmap = new BitmapImage();
+
+            try
+            {
+                bitmap.BeginInit();
+                bitmap.UriSource = new Uri(uri, UriKind.Absolute);
+                bitmap.CacheOption = BitmapCacheOption.OnLoad;
+                bitmap.EndInit();
+                // No need to freeze the bitmap for the default image
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error loading default image: " + ex.Message);
+            }
+
+            return bitmap; // Return the bitmap without freezing it
+        }
+
 
 
 
@@ -177,7 +268,6 @@ namespace RecipeGen
                 // Add the ListBoxItem to the IngredientsListPlaceholder
                 PantryData.Items.Add(recipeItem);
             }
-
         }
 
         private void LoadIngredients()
@@ -409,10 +499,8 @@ namespace RecipeGen
                 string input = SearchRecipeTextBox.Text;
                 input.ToLower();
 
-                
+
             }
         }
-
-
     }
 }

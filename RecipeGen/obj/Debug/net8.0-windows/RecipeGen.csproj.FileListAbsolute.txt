@@ -86,3 +86,4 @@ C:\Users\adr3wb\Source\Repos\RecipeGen2\RecipeGen\obj\Debug\net8.0-windows\refin
 C:\Users\adr3wb\Source\Repos\RecipeGen2\RecipeGen\obj\Debug\net8.0-windows\RecipeGen.pdb
 C:\Users\adr3wb\Source\Repos\RecipeGen2\RecipeGen\obj\Debug\net8.0-windows\RecipeGen.genruntimeconfig.cache
 C:\Users\adr3wb\Source\Repos\RecipeGen2\RecipeGen\obj\Debug\net8.0-windows\ref\RecipeGen.dll
+C:\Users\luked\Documents\recipegen\RecipeGen\bin\Debug\net8.0-windows\HtmlAgilityPack.dll
