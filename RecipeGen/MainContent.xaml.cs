@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows.Input;
 
 namespace RecipeGen
 {
@@ -263,43 +264,5 @@ namespace RecipeGen
                 Console.WriteLine($"Selected Ingredient: {selectedIngredient}");
             }
         }
-
-        private void RecipeData_SizeChanged(object sender, SizeChangedEventArgs e)
-        {
-            // Assuming each item has a width of 150 plus some margin
-            int itemWidth = 150 + 10;
-
-            // Calculate the number of items that fit in the available width
-            int itemsPerRow = (int)(RecipeData.ActualWidth / itemWidth);
-
-            // Find the WrapPanel within the ListBox
-            var wrapPanel = FindWrapPanel(RecipeData);
-            if (wrapPanel != null)
-            {
-                // Set the ItemWidth based on the calculated columns
-                wrapPanel.ItemWidth = RecipeData.ActualWidth / itemsPerRow;
-            }
-        }
-
-        private WrapPanel FindWrapPanel(DependencyObject parent)
-        {
-            for (int i = 0; i < VisualTreeHelper.GetChildrenCount(parent); i++)
-            {
-                var child = VisualTreeHelper.GetChild(parent, i);
-
-                if (child is WrapPanel wrapPanel)
-                {
-                    return wrapPanel;
-                }
-
-                var result = FindWrapPanel(child);
-                if (result != null)
-                {
-                    return result;
-                }
-            }
-            return null;
-        }
-
     }
 }
