@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "I+pk+RFaHkgB4otpxk4ol0DH8WrSnvTZrsXpTZley1D+GLFM8vyZN/CuDWvogZLla4OalZZd6VwfVyvh22BvaQ==",
+  "dgSpecHash": "txC2BfISXD0CTivy0oW/5qLW/Ko3sUS2TrTqLCErbBU5n+tdcz+KreK2ZLc/0xdeon/G3qqLn2QbCLXBFUpysQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\luked\\Documents\\recipegen\\RecipeGen\\RecipeGen.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\luked\\.nuget\\packages\\entityframework\\6.4.4\\entityframework.6.4.4.nupkg.sha512",
+    "C:\\Users\\luked\\.nuget\\packages\\htmlagilitypack\\1.11.70\\htmlagilitypack.1.11.70.nupkg.sha512",
     "C:\\Users\\luked\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\luked\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\luked\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
