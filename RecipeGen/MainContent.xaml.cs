@@ -89,6 +89,7 @@ namespace RecipeGen
                     WHERE ri4.recipe_id = r.rid
                 )
             );";
+            
 
             // Create a list to store the RecipeItems
             List<RecipeItem> recipes = new List<RecipeItem>();
@@ -209,6 +210,7 @@ namespace RecipeGen
                         }
                     }
                 }
+                connection.Close();
             }
 
             // Now populate the IngredientsListPlaceholder with ListBoxItems for each ingredient
@@ -296,6 +298,8 @@ namespace RecipeGen
                             }
                         }
                     }
+
+                    connection.Close();
                 }
 
                 // Now populate the IngredientsListPlaceholder with ListBoxItems for each ingredient
@@ -328,6 +332,7 @@ namespace RecipeGen
                 // Clear previous items
                 string input = SearchPantryTextBox.Text;
                 input.ToLower();
+
                 PantryData.Items.Clear();
 
                 // Create a list to hold the ingredient names
@@ -352,6 +357,7 @@ namespace RecipeGen
                             }
                         }
                     }
+                    connection.Close();
                 }
 
 
@@ -403,42 +409,10 @@ namespace RecipeGen
                 string input = SearchRecipeTextBox.Text;
                 input.ToLower();
 
-                // Create a list to hold the ingredient names
-                List<string> recipes = new List<string>();
-
-                // Run the query in the Database
-                using (var connection = new SQLiteConnection($"Data Source={MainContent.database_path}"))
-                {
-                    connection.Open();
-                    using (var command = new SQLiteCommand(query, connection))
-                    {
-                        // Execute the command and get a reader
-                        command.Parameters.AddWithValue("@name", "%" + input + "%");
-                        using (SQLiteDataReader reader = command.ExecuteReader())
-                        {
-                            // Read the data
-                            while (reader.Read())
-                            {
-                                // Get the ingredient name and add it to the list
-                                var value = reader["title"].ToString(); // Ensure to convert to string
-                                recipes.Add(value);
-                            }
-                        }
-                    }
-                }
-
-                // Now populate the IngredientsListPlaceholder with ListBoxItems for each ingredient
-                foreach (var recipe in recipes)
-                {
-                    // Create a ListBoxItem for each ingredient
-                    ListBoxItem recipeItem = new ListBoxItem
-                    {
-                        Content = recipe,
-                        Foreground = (Brush)FindResource("TextColor"), // Use the TextColor from resources
-                        Margin = new Thickness(0, 5, 0, 0) // Add some margin for spacing
-                    };
-                }
+                
             }
         }
+
+
     }
 }
