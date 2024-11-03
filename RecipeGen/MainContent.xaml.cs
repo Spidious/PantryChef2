@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows.Input;
 
 namespace RecipeGen
 {
@@ -86,8 +87,7 @@ namespace RecipeGen
                             FROM recipe_ingredient ri4
                             WHERE ri4.recipe_id = r.rid
                         )
-                    );
-            ";
+                    );";
 
             // Clear previous items
             RecipeData.Items.Clear();
@@ -266,5 +266,189 @@ namespace RecipeGen
                 Console.WriteLine($"Selected Ingredient: {selectedIngredient}");
             }
         }
+
+        private void Ingredients_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                string input = SearchIngredientsTextBox.Text;
+                input.ToLower();
+
+                string query = "SELECT * FROM ingredients WHERE name LIKE @name;";
+
+                // Create a list to hold the ingredient names
+                List<string> ingredients = new List<string>();
+
+                IngredientsListPlaceholder.Items.Clear();
+                // Run the query in the Database
+                using (var connection = new SQLiteConnection($"Data Source={MainContent.database_path}"))
+                {
+                    connection.Open();
+
+                    using (var command = new SQLiteCommand(query, connection))
+                    {
+                        // Execute the command and get a reader
+                        command.Parameters.AddWithValue("@name", "%"+input+"%");
+                        using (SQLiteDataReader reader = command.ExecuteReader())
+                        {
+                            // Read the data
+                            while (reader.Read())
+                            {
+                                // Get the ingredient name and add it to the list
+                                string value = reader["name"].ToString(); // Ensure to convert to string
+                                ingredients.Add(value);
+                            }
+                        }
+                    }
+                }
+
+                // Now populate the IngredientsListPlaceholder with ListBoxItems for each ingredient
+                foreach (var ingredient in ingredients)
+                {
+                    // Create a ListBoxItem for each ingredient
+                    ListBoxItem ingredientItem = new ListBoxItem
+                    {
+                        Content = ingredient,
+                        Foreground = (Brush)FindResource("TextColor"), // Use the TextColor from resources
+                        Margin = new Thickness(0, 5, 0, 0) // Add some margin for spacing
+                    };
+
+                    // Add the ListBoxItem to the IngredientsListPlaceholder
+                    IngredientsListPlaceholder.Items.Add(ingredientItem);
+                }
+            }
+        }
+
+        private void Pantry_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                string query = $@"
+                    SELECT i.name 
+                    FROM ingredients i 
+                    JOIN recipe_ingredient ri ON i.iid = ri.ingredient_id
+                    JOIN recipe r ON ri.recipe_id = r.rid
+                    WHERE r.rid = 1 AND i.name LIKE @name;";
+                // Clear previous items
+                string input = SearchPantryTextBox.Text;
+                input.ToLower();
+                PantryData.Items.Clear();
+
+                // Create a list to hold the ingredient names
+                List<string> recipes = new List<string>();
+
+                // Run the query in the Database
+                using (var connection = new SQLiteConnection($"Data Source={MainContent.database_path}"))
+                {
+                    connection.Open();
+                    using (var command = new SQLiteCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@name", "%" + input + "%");
+                        // Execute the command and get a reader
+                        using (SQLiteDataReader reader = command.ExecuteReader())
+                        {
+                            // Read the data
+                            while (reader.Read())
+                            {
+                                // Get the ingredient name and add it to the list
+                                var value = reader["name"].ToString(); // Ensure to convert to string
+                                recipes.Add(value);
+                            }
+                        }
+                    }
+                }
+
+
+
+                // Now populate the IngredientsListPlaceholder with ListBoxItems for each ingredient
+                foreach (var recipe in recipes)
+                {
+                    // Create a ListBoxItem for each ingredient
+                    ListBoxItem recipeItem = new ListBoxItem
+                    {
+                        Content = recipe,
+                        Foreground = (Brush)FindResource("TextColor"), // Use the TextColor from resources
+                        Margin = new Thickness(0, 5, 0, 0) // Add some margin for spacing
+                    };
+
+                    // Add the ListBoxItem to the IngredientsListPlaceholder
+                    PantryData.Items.Add(recipeItem);
+                }
+            }
+
+        }
+
+        private void Recipe_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.Key == Key.Enter)
+            {
+                string query = $@"
+                    SELECT r.title, r.url
+                    FROM recipe r
+                    JOIN recipe_ingredient ri ON r.rid = ri.recipe_id
+                    WHERE r.rid != 1
+                    GROUP BY r.rid, r.title, r.url
+                    HAVING COUNT(DISTINCT ri.ingredient_id) = (
+                        SELECT COUNT(DISTINCT ri2.ingredient_id)
+                        FROM recipe_ingredient ri2
+                        WHERE ri2.recipe_id = r.rid
+                    ) 
+                    AND COUNT(DISTINCT ri.ingredient_id) = (
+                        SELECT COUNT(DISTINCT ri3.ingredient_id)
+                        FROM recipe_ingredient ri3
+                        WHERE ri3.recipe_id = 1
+                        AND ri3.ingredient_id IN (
+                            SELECT ri4.ingredient_id
+                            FROM recipe_ingredient ri4
+                            WHERE ri4.recipe_id = r.rid
+                        )
+                    ) AND r.title LIKE @name;";
+
+                string input = SearchRecipeTextBox.Text;
+                input.ToLower();
+                // Clear previous items
+                RecipeData.Items.Clear();
+
+                // Create a list to hold the ingredient names
+                List<string> recipes = new List<string>();
+
+                // Run the query in the Database
+                using (var connection = new SQLiteConnection($"Data Source={MainContent.database_path}"))
+                {
+                    connection.Open();
+                    using (var command = new SQLiteCommand(query, connection))
+                    {
+                        // Execute the command and get a reader
+                        command.Parameters.AddWithValue("@name", "%" + input + "%");
+                        using (SQLiteDataReader reader = command.ExecuteReader())
+                        {
+                            // Read the data
+                            while (reader.Read())
+                            {
+                                // Get the ingredient name and add it to the list
+                                var value = reader["title"].ToString(); // Ensure to convert to string
+                                recipes.Add(value);
+                            }
+                        }
+                    }
+                }
+
+                // Now populate the IngredientsListPlaceholder with ListBoxItems for each ingredient
+                foreach (var recipe in recipes)
+                {
+                    // Create a ListBoxItem for each ingredient
+                    ListBoxItem recipeItem = new ListBoxItem
+                    {
+                        Content = recipe,
+                        Foreground = (Brush)FindResource("TextColor"), // Use the TextColor from resources
+                        Margin = new Thickness(0, 5, 0, 0) // Add some margin for spacing
+                    };
+
+                    // Add the ListBoxItem to the IngredientsListPlaceholder
+                    RecipeData.Items.Add(recipeItem);
+                }
+            }
+        }
+
     }
 }
