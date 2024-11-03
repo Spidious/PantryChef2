@@ -28,59 +28,58 @@ namespace RecipeGen
 
         private void RecipeQuery()
         {
-            string connectionStr = $"Data Source= {MainContent.database_path};Version =3;";// C: \Users\adr3wb\Source\Repos\RecipeGen\RecipeGen\Data\database.db
+            string connectionStr = $"Data Source={MainContent.database_path};Version=3;";
             using (SQLiteConnection connection = new SQLiteConnection(connectionStr))
             {
                 connection.Open();
-                string RecipeTitle = RecipeTitleTextBox.Text;
-                RecipeTitle= RecipeTitle.ToLower();
+                string RecipeTitle = RecipeTitleTextBox.Text.ToLower();
                 string RecipeURL = RecipeURLTextBox.Text;
-                string RecipeIngredients = RecipeIngredientsTextBox.Text ;
-                RecipeIngredients = RecipeIngredients.ToLower();
+                string RecipeIngredients = RecipeIngredientsTextBox.Text.ToLower();
                 string[] ingredients = RecipeIngredients.Split(',');
-                string insert_recipe = "INSERT INTO recipe (title,url) VALUES (@title,@url)";
+
+                // Insert recipe
+                string insert_recipe = "INSERT INTO recipe (title, url) VALUES (@title, @url)";
                 using (SQLiteCommand command = new SQLiteCommand(insert_recipe, connection))
                 {
                     command.Parameters.AddWithValue("@title", RecipeTitle);
                     command.Parameters.AddWithValue("@url", RecipeURL);
                     command.ExecuteNonQuery();
                 }
+
                 long recipe_id = connection.LastInsertRowId;
 
-                for (int i = 0; i < ingredients.Length; i++)
+                foreach (string ingredient in ingredients)
                 {
                     long ingredient_id;
-                    string checkQuery = "SELECT COUNT(*) FROM ingredients WHERE name = @name;";
+                    string trimmedIngredient = ingredient.Trim();
+
+                    // Check if ingredient exists
+                    string checkQuery = "SELECT iid FROM ingredients WHERE name = @name;";
                     using (SQLiteCommand checkCommand = new SQLiteCommand(checkQuery, connection))
                     {
-                        
-                        string input = ingredients[i].Trim();
-                        checkCommand.Parameters.AddWithValue("@name", input);
+                        checkCommand.Parameters.AddWithValue("@name", trimmedIngredient);
+                        var result = checkCommand.ExecuteScalar();
 
-                        long count = (long)checkCommand.ExecuteScalar(); // Execute the query and get the count
-
-                        if (count == 0) //if ingredient is not in table insert
+                        if (result == null) // Ingredient not in table; insert it
                         {
                             string insertQuery = "INSERT INTO ingredients (name) VALUES (@name);";
-                            using (SQLiteCommand command = new SQLiteCommand(insertQuery, connection))
+                            using (SQLiteCommand insertCommand = new SQLiteCommand(insertQuery, connection))
                             {
-                                command.Parameters.AddWithValue("@name", input);
-                                command.ExecuteNonQuery();
+                                insertCommand.Parameters.AddWithValue("@name", trimmedIngredient);
+                                insertCommand.ExecuteNonQuery();
                             }
                             ingredient_id = connection.LastInsertRowId;
                         }
-                        else
+                        else // Ingredient exists; get its iid
                         {
-                            using (var command = new SQLiteCommand("SELECT iid FROM ingredients WHERE name = @name;", connection))
-                            {
-                                command.Parameters.AddWithValue("@name", input);
-                                //var result = command.ExecuteScalar();
-                                ingredient_id = (long)command.ExecuteScalar();
-                            }
+                            ingredient_id = (long)result;
                         }
                     }
 
-                    string insert_recipe_ingredient = "INSERT INTO recipe_ingredient (ingredient_id, recipe_id) VALUES(@iid,@rid)";
+                    // Insert into recipe_ingredient, ignoring duplicates
+                    string insert_recipe_ingredient = @"
+                INSERT OR IGNORE INTO recipe_ingredient (ingredient_id, recipe_id) 
+                VALUES (@iid, @rid);";
                     using (SQLiteCommand insertCommand = new SQLiteCommand(insert_recipe_ingredient, connection))
                     {
                         insertCommand.Parameters.AddWithValue("@iid", ingredient_id);
@@ -88,10 +87,13 @@ namespace RecipeGen
                         insertCommand.ExecuteNonQuery();
                     }
                 }
-                connection.Clone();
+
+                connection.Close();
             }
+
             CancelRequested?.Invoke(); // Raise event to go back
         }
+
         private void RecipeTitleTextBox_GotFocus(object sender, RoutedEventArgs e)
         {
             if (RecipeTitleTextBox.Text == "Title")
