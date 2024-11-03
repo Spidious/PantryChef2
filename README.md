@@ -1,8 +1,18 @@
 # Pantry Chef
 
-Download and install [sqlite](https://www.sqlite.org/download.html)
+### Launching the App
+Download the the files in this repository and launch the `start.bat` script.
 
-*Instructions can be found at [tutorialspoint](https://www.tutorialspoint.com/sqlite/sqlite_installation.htm)*
+### Using the App
+The recipies tab is populated with all recipies you can make given the items in your pantry. Click a recipe to open it. 
+You can add a recipe in by clicking the `+` button next to the search bar.
+You can also display all entered recipes with the `Show All Recipes` button
+
+The Pantry tab will show items in your pantry. You can remove items by double clicking them. 
+Add items by double clicking them in the ingredients tab or using a comma separated list in the `+` menu.
+
+The ingredients tab shows all ingredients in the database. More ingredients can be added by either using the `+` menu or by using a comma separated list in the Recipes add menu.
+Any ingredient added in the recipes manu will automatically be added to the global ingredients if it does not exist already.
 
 # About the Project
 
