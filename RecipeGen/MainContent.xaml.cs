@@ -70,6 +70,42 @@ namespace RecipeGen
             }
         }
 
+        private async Task LoadAllRecipes()
+        {
+            string query = "SELECT title, url FROM recipe WHERE rid != 1;"; // Simple query to fetch all recipes except pantry
+
+            List<RecipeItem> allRecipes = new List<RecipeItem>();
+
+            using (var connection = new SQLiteConnection($"Data Source={MainContent.database_path}"))
+            {
+                connection.Open();
+                using (var command = new SQLiteCommand(query, connection))
+                {
+                    using (SQLiteDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            string title = reader["title"].ToString();
+                            string url = reader["url"].ToString();
+
+                            var recipeImage = await FetchFirstImageFromUrl(url);
+                            var recipeItem = new RecipeItem(title, url, recipeImage);
+                            allRecipes.Add(recipeItem);
+                        }
+                    }
+                }
+            }
+
+            RecipeData.ItemsSource = allRecipes;
+        }
+
+        // ShowAllRecipesButton click event handler
+        private async void ShowAllRecipesButton_Click(object sender, RoutedEventArgs e)
+        {
+            await LoadAllRecipes();
+        }
+
+
         // Functions for loading data
         private async Task LoadRecipes()
         {

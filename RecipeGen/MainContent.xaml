@@ -39,22 +39,30 @@
                     <!-- Search and Add Button for Recipes -->
                     <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="0,0,0,10">
                         <TextBox Width="200" 
-                     Height="30" 
-                     Background="{StaticResource SecondaryBackground}" 
-                     Foreground="{StaticResource TextColor}" 
-                     BorderBrush="{StaticResource AccentColor}" 
-                     Margin="0,0,10,0"
-                     Text="Search Recipes"
-                     x:Name="SearchRecipeTextBox"
-                     KeyDown="Recipe_KeyDown"
-                     GotFocus="SearchRecipeTextBox_GotFocus"
-                     LostFocus="SearchRecipeTextBox_LostFocus"/>
+                                Height="30" 
+                                Background="{StaticResource SecondaryBackground}" 
+                                Foreground="{StaticResource TextColor}" 
+                                BorderBrush="{StaticResource AccentColor}" 
+                                Margin="0,0,10,0"
+                                Text="Search Recipes"
+                                x:Name="SearchRecipeTextBox"
+                                KeyDown="Recipe_KeyDown"
+                                GotFocus="SearchRecipeTextBox_GotFocus"
+                                LostFocus="SearchRecipeTextBox_LostFocus"/>
                         <Button x:Name="AddRecipeButton" Width="30" 
-                    Height="30" 
-                    Content="+" 
-                    Background="{StaticResource AccentColor}" 
-                    Foreground="{StaticResource TextColor}"
-                    Click="AddRecipeButton_Click"/>
+                                Height="30" 
+                                Content="+" 
+                                Background="{StaticResource AccentColor}" 
+                                Foreground="{StaticResource TextColor}"
+                                Click="AddRecipeButton_Click"/>
+                        <Button x:Name="ShowAllRecipesButton" 
+                                Width="100" 
+                                Height="30" 
+                                Content="Show All Recipes" 
+                                Background="{StaticResource AccentColor}" 
+                                Foreground="{StaticResource TextColor}" 
+                                Margin="10,0,0,0"
+                                Click="ShowAllRecipesButton_Click"/>
                     </StackPanel>
 
                     <!-- Space for Recipe Widgets -->
