@@ -7,6 +7,8 @@ using System.Windows.Media.Imaging; // Updated for BitmapImage
 using System.IO;
 using System.Net.Http;
 using System.Threading.Tasks; // Added for async Task
+using System.Windows.Input;
+using System.Data.SqlClient;
 
 namespace RecipeGen
 {
@@ -312,6 +314,7 @@ namespace RecipeGen
                     Content = ingredient,
                     Foreground = (Brush)FindResource("TextColor"), // Use the TextColor from resources
                     Margin = new Thickness(0, 5, 0, 0) // Add some margin for spacing
+
                 };
 
                 // Add the ListBoxItem to the IngredientsListPlaceholder
@@ -331,15 +334,32 @@ namespace RecipeGen
             }
         }
 
-        private void PantryData_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void PantryData_SelectionChanged(object sender, MouseButtonEventArgs e)
         {
             if (PantryData.SelectedItem is ListBoxItem selectedItem)
             {
                 // Get the selected ingredient
                 string selectedIngredient = selectedItem.Content.ToString();
 
+                PantryData.Items.Remove(selectedItem);
+
+                string query = @"DELETE FROM recipe_ingredient
+                                WHERE ingredient_id = (SELECT iid FROM ingredients WHERE name = @name) 
+                                AND recipe_id = 1;";
+
+                using (SQLiteConnection connection = new SQLiteConnection($"Data Source={MainContent.database_path}"))
+                {
+                    connection.Open();
+                    using (SQLiteCommand command = new SQLiteCommand(query, connection)) 
+                    {
+                        command.Parameters.AddWithValue("@name",selectedIngredient);
+                        command.ExecuteNonQuery();
+                    }
+                    connection.Close();
+
+                }
                 // Do something with the selected ingredient
-                Console.WriteLine($"Selected Ingredient: {selectedIngredient}");
+                //Console.WriteLine($"Selected Ingredient: {selectedIngredient}");
             }
         }
 
@@ -519,6 +539,38 @@ namespace RecipeGen
                         UseShellExecute = true
                     });
                 }
+            }
+        }
+
+        private void SearchPantryTextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (SearchPantryTextBox.Text == "Search Pantry")
+            {
+                SearchPantryTextBox.Text = string.Empty;
+            }
+        }
+
+        private void SearchPantryTextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(SearchPantryTextBox.Text))
+            {
+                SearchPantryTextBox.Text = "Search Pantry";
+            }
+        }
+
+        private void SearchIngredientsTextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (SearchIngredientsTextBox.Text == "Search Ingredients")
+            {
+                SearchIngredientsTextBox.Text = string.Empty;
+            }
+        }
+
+        private void SearchIngredientsTextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(SearchIngredientsTextBox.Text))
+            {
+                SearchIngredientsTextBox.Text = "Search Ingredients";
             }
         }
 

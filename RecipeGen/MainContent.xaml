@@ -104,9 +104,11 @@
                                  Foreground="{StaticResource TextColor}" 
                                  BorderBrush="{StaticResource AccentColor}" 
                                  Margin="0,0,10,0"
-                                 Text="Search Ingredients"
+                                 Text="Search Pantry"
                                  x:Name="SearchPantryTextBox"
-                                 KeyDown="Pantry_KeyDown"/>
+                                 KeyDown="Pantry_KeyDown"
+                                 GotFocus="SearchPantryTextBox_GotFocus"
+                                 LostFocus="SearchPantryTextBox_LostFocus"/>
                         
                         <Button x:Name="AddPantryItemButton" Width="30" 
                                 Height="30" 
@@ -117,15 +119,17 @@
                     </StackPanel>
 
                     <!-- Space for Ingredient List -->
+                    <!--"PantryData_SelectionChanged"-->
                     <ScrollViewer Grid.Row="1" Background="{StaticResource SecondaryBackground}" Padding="10">
                         <ListBox x:Name="PantryData" 
                                  Background="{StaticResource SecondaryBackground}" 
                                  Foreground="{StaticResource TextColor}" 
-                                 SelectionChanged="PantryData_SelectionChanged"
+                       
+                                 MouseDoubleClick="PantryData_SelectionChanged"
                                  ScrollViewer.VerticalScrollBarVisibility="Auto"
                                  ScrollViewer.HorizontalScrollBarVisibility="Auto"
                                  MaxHeight="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType=ScrollViewer}}">
-                            <!-- Items will be added here dynamically -->
+                            <!-- Items will be added here dynamically -->                           
                         </ListBox>
                     </ScrollViewer>
                 </Grid>
@@ -149,7 +153,10 @@
                                  Margin="0,0,10,0"
                                  Text="Search Ingredients"
                                  x:Name="SearchIngredientsTextBox"
-                                 KeyDown="Ingredients_KeyDown"/>
+                                 KeyDown="Ingredients_KeyDown"
+                                 GotFocus="SearchIngredientsTextBox_GotFocus"
+                                 LostFocus="SearchIngredientsTextBox_LostFocus"/>
+                        
                         <Button x:Name="AddIngredientButton" Width="30" 
                                 Height="30" 
                                 Content="+" 
