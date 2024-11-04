@@ -1,4 +1,5 @@
 # Pantry Chef
+*Submission for the Tigerhacks 2024 hackathon*
 
 ### Launching the App
 Download the the files in this repository and launch the `start.bat` script.
