@@ -1,5 +1,5 @@
-# Pantry Chef
-*Submission for the Tigerhacks 2024 hackathon*
+# Pantry Chef 2
+*Copy of my [Hackathon submission](https://github.com/Spidious/Pantry-Chef) for me to continue working on.*
 
 ### Launching the App
 Download the the files in this repository and launch the `start.bat` script.
